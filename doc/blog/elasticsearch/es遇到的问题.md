@@ -130,7 +130,7 @@ discovery.zen.ping.unicast.hosts: ["192.168.1.1:9303","192.168.1.1:9304","192.16
 
 配置中的集群配置`discovery.zen.ping.unicast.hosts`的ip跟当前本机的`network.host`不一致，果断把自己给坑了(-_-)（`当然这是为了模拟集群而在一台机器上部署多个节点，生产环境不推荐这么搞，为了数据安全以及性能提升，还是一机一节点的好`）
 
-![image-20210622194223592](C:\Users\admin\AppData\Roaming\Typora\typora-user-images\image-20210622194223592.png)
+
 
 单机部署还是绑定自己本地吧
 

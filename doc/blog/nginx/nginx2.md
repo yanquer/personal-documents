@@ -3,7 +3,7 @@
 
 
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/9autpibOEiaVK7BC7nO81PibMf2F2H2DeFJW0YxDu2RXiaYcZ6X3974QOicxNn51wdBJghCOXkcLibqiaMCoTTdvnqV4A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 
 
 
@@ -13,7 +13,7 @@ Nginx联合创始人安德鲁·阿列克谢夫（Andrew Alexeev）曾说：Nginx
 
 -----
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/PuWEKCV6mJP1wNC0Q2btv2dEwJp6PIyH9IWd8Seq66C8cjqBQBXcEaIblsQLyuicF6tEcbibOnekljtOfKNAwKqA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 
 **Nginx的产生**
 
@@ -50,7 +50,7 @@ Nginx联合创始人安德鲁·阿列克谢夫（Andrew Alexeev）曾说：Nginx
 
 -----
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/PuWEKCV6mJP1wNC0Q2btv2dEwJp6PIyH9IWd8Seq66C8cjqBQBXcEaIblsQLyuicF6tEcbibOnekljtOfKNAwKqA/640?wx_fmt=other&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 
 **Nginx 基本概念**
 
@@ -72,7 +72,7 @@ Nginx联合创始人安德鲁·阿列克谢夫（Andrew Alexeev）曾说：Nginx
 
 如果对OSI 七层模型与 TCP/IP 四层模型不是很熟悉可以再回顾下
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/2rMyvdWluHsf3pbAhVGT0OHOsWicXwAibj63MPBuP2rSYiamejPhicVZQfCpOrshUHvcwxic9vfUSaS9I3Xrcl6qUicg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 
 > **正向代理**
 
@@ -193,7 +193,7 @@ nginx -V
 
 -----
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/PuWEKCV6mJP1wNC0Q2btv2dEwJp6PIyH9IWd8Seq66C8cjqBQBXcEaIblsQLyuicF6tEcbibOnekljtOfKNAwKqA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 
 **为什么选择Nginx**
 
@@ -280,7 +280,7 @@ Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理�
 
 
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/PuWEKCV6mJP1wNC0Q2btv2dEwJp6PIyH9IWd8Seq66C8cjqBQBXcEaIblsQLyuicF6tEcbibOnekljtOfKNAwKqA/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+
 
  **Nginx配置**
 
@@ -343,4 +343,3 @@ http {
 
 下面是 nginx 一些配置中常用的内置全局变量，你可以在配置的任何位置使用它们。
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/2rMyvdWluHsf3pbAhVGT0OHOsWicXwAibjfN2JNkTeib8l2hx5BUGPiaMQhEq19P7ev3HkAzric1dthxSJDZBPQ705w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)

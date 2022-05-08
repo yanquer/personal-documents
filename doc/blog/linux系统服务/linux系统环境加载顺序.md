@@ -71,7 +71,7 @@ hB
 
 环境变量的调用顺序
 
-![这里写图片描述](https://img-blog.csdn.net/20170816110046308?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvbGVzaGFtaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 上图列出了登陆shell与非登陆shell读取的不同的shell环境配置文件。 
 

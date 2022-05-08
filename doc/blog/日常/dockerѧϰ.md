@@ -21,7 +21,7 @@ Docker 容器通过 Docker 镜像来创建。
 | 容器   | 对象     |
 | 镜像   | 类       |
 
-![img](https://www.runoob.com/wp-content/uploads/2016/04/576507-docker1.png)
+
 
 
 

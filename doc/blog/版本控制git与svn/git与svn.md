@@ -144,7 +144,7 @@ Git 最核心的一个概念就是工作流。
 
 
 
-![img](https://pic4.zhimg.com/80/v2-024f245887c2ac566c40e4685699d89b_720w.jpg)
+
 
 [ Git命令 ]
 
@@ -164,7 +164,7 @@ Git 最核心的一个概念就是工作流。
 
 
 
-![img](https://pic4.zhimg.com/80/v2-3eddd4be417b6b5587a63c301860af63_720w.jpg)
+
 
 [ Git-SVN ]
 

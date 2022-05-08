@@ -35,11 +35,11 @@ ctrl + shift + p        #全局打开文件
 
 在vscode插件库（https://marketplace.visualstudio.com/vscode）搜索自己需要的插件，点击右侧 Download Extension
 
-![img](https://img-blog.csdnimg.cn/20200708112721374.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTg0NzMyMQ==,size_16,color_FFFFFF,t_70)
+
 
 然后将下载的文件，复制到vscode安装目录下的bin文件夹中
 
-![img](https://img-blog.csdnimg.cn/20200708112935537.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTg0NzMyMQ==,size_16,color_FFFFFF,t_70)
+
 
 在bin文件夹下打开cmd，运行如下命令
 
@@ -49,13 +49,13 @@ code --install-extension octref.vuter-0.23.0.vsix 	#需要安装的插件文件�
 
 4.出现如下提示，则安装成功。
 
-![img](https://img-blog.csdnimg.cn/20200708113456773.png)
+
 
 -----------------------------------------------------------------------------------
 
 vscode中可直接从visx安装插件
 
-![img](https://img-blog.csdnimg.cn/20200715160732173.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTg0NzMyMQ==,size_16,color_FFFFFF,t_70)
+
 
 原文链接：https://blog.csdn.net/qq_26118603/article/details/115062440
 

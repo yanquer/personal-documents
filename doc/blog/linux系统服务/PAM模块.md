@@ -4,7 +4,7 @@ PAM（Pluggable Authentication Modules， 嵌入式模块）
 
 一套应用程序编程接口，提供一连串的验证机制，使用者将需求告知，PAM返回使用者验证的结果
 
-![image-20211204173529556](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/image-20211204173529556.png)
+
 
 配置文件都在  /etc/pam.d 下面
 

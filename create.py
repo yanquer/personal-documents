@@ -23,7 +23,7 @@ def write(data_str, file_name, model='w',):
 
 def index_conf(caption, file_dir, name,  max_depth=2):
 	assert file_dir
-	title = '{}\n====\n\n'.format(name)
+	title = '{}\n====================\n\n'.format(name)
 	body_line1 = '.. toctree::\n'
 	body_line2 = '{}:maxdepth: {}\n'.format(BLANK, max_depth)
 	body_line3 = '{}:caption: {}\n'.format(BLANK, name)

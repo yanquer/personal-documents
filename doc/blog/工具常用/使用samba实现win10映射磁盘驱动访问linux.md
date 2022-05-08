@@ -232,5 +232,5 @@ max log size = 50 	# 指定日志的最大容量，单位是K
 | -c "[D]" -u user | 暂停该samba用户user    |
 | -c "[D]" -u user | 恢复该samba用户user    |
 
-​    ![img](https://img-blog.csdnimg.cn/20190123163756725.png)
+​    
 

@@ -4,8 +4,7 @@
 
 RAID 的意思是廉价磁盘冗余阵列（Redundant Array of Inexpensive Disks），但现在它被称为独立磁盘冗余阵列（Redundant Array of Independent Drives）。早先一个容量很小的磁盘都是非常昂贵的，但是现在我们可以很便宜的买到一个更大的磁盘。Raid 是一系列放在一起，成为一个逻辑卷的磁盘集合。
 
-![在 Linux 中理解 RAID 设置](https://img.linux.net.cn/data/attachment/album/201508/24/173400b4ft0ectejctcc7e.jpg)
-
+ [在 Linux 中理解 RAID 设置]
 *在 Linux 中理解 RAID 设置*
 
 RAID 包含一组或者一个集合甚至一个阵列。使用一组磁盘结合驱动器组成 RAID 阵列或 RAID 集。将至少两个磁盘连接到一个 RAID 控制器，而成为一个逻辑卷，也可以将多个驱动器放在一个组中。一组磁盘只能使用一个 RAID 级别。使用 RAID 可以提高服务器的性能。不同 RAID 的级别，性能会有所不同。它通过容错和高可用性来保存我们的数据。
@@ -32,7 +31,7 @@ RAID 包含一组或者一个集合甚至一个阵列。使用一组磁盘结合
 
 硬件 RAID 卡如下所示：
 
-![硬件 RAID](https://img.linux.net.cn/data/attachment/album/201508/24/173401kcpw98cnlbqn2w32.jpg)
+[硬件 RAID]
 
 *硬件 RAID*
 
@@ -56,7 +55,6 @@ RAID 在大多数 Linux 发行版上使用名为 mdadm 的软件包进行管理�
 
 #### RAID 0 / 条带化
 
-![img](https://img.linux.net.cn/data/attachment/album/201508/24/173403wxx2re9gzg0ixvsr.png)
 
 条带化有很好的性能。在 RAID 0（条带化）中数据将使用切片的方式被写入到磁盘。一半的内容放在一个磁盘上，另一半内容将被写入到另一个磁盘。
 
@@ -71,7 +69,7 @@ RAID 在大多数 Linux 发行版上使用名为 mdadm 的软件包进行管理�
 
 #### RAID 1 / 镜像化
 
-![img](https://img.linux.net.cn/data/attachment/album/201508/24/173403l411i0j8o00dfogy.png)
+
 
 镜像也有不错的性能。镜像可以对我们的数据做一份相同的副本。假设我们有两个2TB的硬盘驱动器，我们总共有4TB，但在镜像中，但是放在 RAID 控制器后面的驱动器形成了一个逻辑驱动器，我们只能看到这个逻辑驱动器有2TB。
 
@@ -87,7 +85,7 @@ RAID 在大多数 Linux 发行版上使用名为 mdadm 的软件包进行管理�
 
 #### RAID 5 / 分布式奇偶校验
 
-![img](https://img.linux.net.cn/data/attachment/album/201508/24/173404xjbpjvakpybbyyk9.png)
+
 
 RAID 5 多用于企业级。 RAID 5 的以分布式奇偶校验的方式工作。奇偶校验信息将被用于重建数据。它从剩下的正常驱动器上的信息来重建。在驱动器发生故障时，这可以保护我们的数据。
 
@@ -103,7 +101,7 @@ RAID 5 多用于企业级。 RAID 5 的以分布式奇偶校验的方式工作�
 
 #### RAID 6 双分布式奇偶校验磁盘
 
-![img](https://img.linux.net.cn/data/attachment/album/201508/24/173404p25l2kk2oklzb9oo.png)
+
 
 RAID 6 和 RAID 5 相似但它有两个分布式奇偶校验。大多用在大数量的阵列中。我们最少需要4个驱动器，即使有2个驱动器发生故障，我们依然可以更换新的驱动器后重建数据。
 
@@ -120,9 +118,9 @@ RAID 6 和 RAID 5 相似但它有两个分布式奇偶校验。大多用在大�
 
 #### RAID 10 / 镜像+条带
 
-![img](https://img.linux.net.cn/data/attachment/album/201508/24/173404dv00t6kvwtivrv01.png)
 
-![img](https://img.linux.net.cn/data/attachment/album/201508/24/173405vmcgppwec1v48n6p.png)
+
+
 
 RAID 10 可以被称为1 + 0或0 +1。它将做镜像+条带两个工作。在 RAID 10 中首先做镜像然后做条带。在 RAID 01 上首先做条带，然后做镜像。RAID 10 比 01 好。
 
@@ -162,7 +160,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 
 创建 RAID 最少应使用2个连接到 RAID 控制器的磁盘组成，来构成逻辑卷，可以根据定义的 RAID 级别将更多的驱动器添加到一个阵列中。不使用物理硬件创建的 RAID 被称为软件 RAID。软件 RAID 也叫做穷人 RAID。
 
-![在 Linux 中创建 RAID0](https://img.linux.net.cn/data/attachment/album/201508/24/222802kx000602thjwxthu.jpg)
+
 
 *在 Linux 中创建 RAID0*
 
@@ -203,7 +201,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # yum clean all && yum update# yum install mdadm -y
 ```
 
-![安装 mdadm 工具](https://img.linux.net.cn/data/attachment/album/201508/24/222803t18vzbvv8g0bb89m.png)
+
 
 *安装 mdadm 工具*
 
@@ -215,7 +213,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # ls -l /dev | grep sd
 ```
 
-![检查硬盘](https://img.linux.net.cn/data/attachment/album/201508/24/222803rq0qe0rwe3n22wkw.png)
+
 
 *检查硬盘*
 
@@ -225,7 +223,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mdadm --examine /dev/sd[b-c]
 ```
 
-![检查 RAID 设备](https://img.linux.net.cn/data/attachment/album/201508/24/222804ulntnhzxylob0b0t.png)
+
 
 *检查 RAID 设备*
 
@@ -247,7 +245,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 - 只需按两次回车键选择默认值即可。
 - 然后，按`P` 来显示创建好的分区。
 
-![创建分区](https://img.linux.net.cn/data/attachment/album/201508/24/222806zse644qqf46d79y6.png)
+
 
 *创建分区*
 
@@ -259,7 +257,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 - 然后再次使用`p`查看我们所做的更改。
 - 使用`w`保存更改。
 
-![在 Linux 上创建 RAID 分区](https://img.linux.net.cn/data/attachment/album/201508/24/222809j0hzhtq1huykhecw.png)
+
 
 *在 Linux 上创建 RAID 分区*
 
@@ -271,7 +269,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mdadm --examine /dev/sd[b-c]# mdadm --examine /dev/sd[b-c]1
 ```
 
-![验证 RAID 分区](https://img.linux.net.cn/data/attachment/album/201508/24/222811w6uql6ez699he6c7.png)
+
 
 *验证 RAID 分区*
 
@@ -293,7 +291,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # cat /proc/mdstat
 ```
 
-![查看 RAID 级别](https://img.linux.net.cn/data/attachment/album/201508/24/222811wvx8y222xnz2prww.png)
+
 
 *查看 RAID 级别*
 
@@ -301,7 +299,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mdadm -E /dev/sd[b-c]1
 ```
 
-![查看 RAID 设备](https://img.linux.net.cn/data/attachment/album/201508/24/222813n6p4hf6m9jpwpepz.png)
+
 
 *查看 RAID 设备*
 
@@ -309,7 +307,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mdadm --detail /dev/md0
 ```
 
-![查看 RAID 阵列](https://img.linux.net.cn/data/attachment/album/201508/24/222815q1llml1slwhbhqrb.png)
+
 
 *查看 RAID 阵列*
 
@@ -321,7 +319,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mkfs.ext4 /dev/md0
 ```
 
-![创建 ext4 文件系统](https://img.linux.net.cn/data/attachment/album/201508/24/222817tyj74d56fqdpk72e.png)
+
 
 *创建 ext4 文件系统*
 
@@ -343,7 +341,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # touch /mnt/raid0/tecmint.txt# echo "Hi everyone how you doing ?" > /mnt/raid0/tecmint.txt# cat /mnt/raid0/tecmint.txt# ls -l /mnt/raid0/
 ```
 
-![验证挂载的设备](https://img.linux.net.cn/data/attachment/album/201508/24/222822coztobq68wpzf6qp.png)
+
 
 *验证挂载的设备*
 
@@ -359,7 +357,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 /dev/md0                /mnt/raid0              ext4    deaults         0 0
 ```
 
-![添加设备到 fstab 文件中](https://img.linux.net.cn/data/attachment/album/201508/24/222823tj0od78qedw59o9s.png)
+
 
 *添加设备到 fstab 文件中*
 
@@ -369,7 +367,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mount -av
 ```
 
-![检查 fstab 文件是否有误](https://img.linux.net.cn/data/attachment/album/201508/24/222825n644vx4pfd4x62rr.png)
+
 
 *检查 fstab 文件是否有误*
 
@@ -381,7 +379,7 @@ RAID 即廉价磁盘冗余阵列，其高可用性和可靠性适用于大规模
 # mdadm -E -s -v >> /etc/mdadm.conf# mdadm --detail --scan --verbose >> /etc/mdadm.conf  # cat /etc/mdadm.conf
 ```
 
-![保存 RAID 配置](https://img.linux.net.cn/data/attachment/album/201508/24/222826atiiobykt9jy8yxt.png)
+
 
 *保存 RAID 配置*
 
@@ -395,7 +393,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 
 本文由 [LCTT](https://github.com/LCTT/TranslateProject) 原创翻译，[Linux中国](https://linux.cn/article-6087-1.html) 荣誉推出
 
-![img](https://img.linux.net.cn/static/image/common/linisi.svg)
+
 
 
 
@@ -441,7 +439,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 
 **RAID 镜像**意味着相同数据的完整克隆（或镜像），分别写入到两个磁盘中。创建 RAID 1 至少需要两个磁盘，而且仅用于读取性能或者可靠性要比数据存储容量更重要的场合。
 
-![在 Linux 中设置 RAID 1](https://img.linux.net.cn/data/attachment/album/201508/25/233632xkk7ik6x4vk6575p.jpg)
+
 
 *在 Linux 中设置 RAID 1*
 
@@ -484,7 +482,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 # mdadm -E /dev/sd[b-c]
 ```
 
-![检查 RAID 的磁盘](https://img.linux.net.cn/data/attachment/album/201508/25/233634v7rzt7jj0s0643z4.png)
+
 
 *检查 RAID 的磁盘*
 
@@ -511,7 +509,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 - 然后再次使用`p`查看我们所做的更改。
 - 使用`w`保存更改。
 
-![创建磁盘分区](https://img.linux.net.cn/data/attachment/album/201508/25/233638o8sp6snp8y75rnzj.png)
+
 
 *创建磁盘分区*
 
@@ -521,7 +519,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 # fdisk /dev/sdc
 ```
 
-![创建第二个分区](https://img.linux.net.cn/data/attachment/album/201508/25/233642l5t2zj2fypmp55t2.png)
+
 
 *创建第二个分区*
 
@@ -531,11 +529,11 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 # mdadm -E /dev/sd[b-c]
 ```
 
-![验证分区变化](https://img.linux.net.cn/data/attachment/album/201508/25/233643zdsbfa3bda3b3gkk.png)
+
 
 *验证分区变化*
 
-![检查 RAID 类型](https://img.linux.net.cn/data/attachment/album/201508/25/233643j3m6kp80k1xveiii.png)
+
 
 *检查 RAID 类型*
 
@@ -549,7 +547,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 # mdadm --create /dev/md0 --level=mirror --raid-devices=2 /dev/sd[b-c]1# cat /proc/mdstat
 ```
 
-![创建RAID设备](https://img.linux.net.cn/data/attachment/album/201508/25/233644u8ccscp1v0uotuu1.png)
+
 
 *创建RAID设备*
 
@@ -559,7 +557,7 @@ via: http://www.tecmint.com/create-raid0-in-linux/
 # mdadm -E /dev/sd[b-c]1# mdadm --detail /dev/md0
 ```
 
-![检查 RAID 设备类型](https://img.linux.net.cn/data/attachment/album/201508/25/233648s66qp76qy8qqjx9x.png)
+
 
 *检查 RAID 设备类型*
 

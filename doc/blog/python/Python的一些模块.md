@@ -498,7 +498,7 @@ with os.popen(command, "r") as p:
 
 通俗的讲，非阻塞就是os.popen不会等cmd命令执行完毕就继续下面的代码了，不信？！看下面代码实例：
 
-![1.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjUwNDUwOC1lOTA2ODQ1Nzk4MjMwYjJi)
+
 
 从上面实例可知，os.popen执行打开Uedit32.exe这个工具，但从实际执行结果看，Uedit32.exe还没打开，就直接进入了下一条语句，打印了“hello 小蟒社区”。在某些应用场景，可能这并不是你期望的行为，那如何让命令执行完后，再执行下一句呢？
 
@@ -512,7 +512,7 @@ with os.popen(command, "r") as p:
 
 看下面代码实例1：
 
-![2.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjUwNDUwOC0xMzI5MGFiNmQxMjc5MDIz)
+
 
 os.popen执行了ping  127.0.0.1  -t 该命令会一直执行，除非CTRL+C强制退出，因而，执行readlines读取命令输出时会造成卡住。
 
@@ -520,7 +520,7 @@ os.popen执行了ping  127.0.0.1  -t 该命令会一直执行，除非CTRL+C强�
 
 使用os.popen执行sqlplus命令对数据库进行操作的场景，如果sqlplus执行失败，会进入交互模式，如图所示，此时使用readlines()读取执行结果时也会卡死，效果如上图：
 
-![3.png](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8xMjUwNDUwOC1lZjczNjQzMjIyYjhhN2M3)
+
 
 总结
 
@@ -1118,7 +1118,7 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=16, tm_min=37, tm_se
 
 总览
 
-![image-20220124115250040](Python%E5%AD%A6%E4%B9%A0.assets/image-20220124115250040.png)
+
 
 
 
@@ -1364,7 +1364,7 @@ subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stde
 
 
 
-![image-20220215140104611](Python%E5%AD%A6%E4%B9%A0.assets/image-20220215140104611.png)
+
 
 　　
 

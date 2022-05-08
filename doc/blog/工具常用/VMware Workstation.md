@@ -2,9 +2,9 @@
 
 当我们安装VMware Workstation后，在[宿主机](https://cloud.tencent.com/product/cdh?from=10680)（物理电脑）上会多出两个网卡，VMNet1、VMNet8，在虚拟机设置里会多出一个配置 VMNet0。
 
-![img](https://ask.qcloudimg.com/http-save/yehe-6175518/7coh1ddgpz.png?imageView2/2/w/1620)
 
-![img](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/image-20211207115747817.png)
+
+
 
 　　vmnet1和vmnet8是两个虚拟网卡，主要作用是让虚拟机可以通过你的宿主机的网线上网。注意：如果有“！”，说明不能用。 　vmnet1是为host-only方式服务的，vmnet8是为NAT方式服务的。
 
@@ -50,7 +50,7 @@
 
 ​    桥接模式就是将主机网卡与虚拟机虚拟的网卡利用虚拟网桥进行通信。在桥接的作用下，类似于把物理主机虚拟为一个交换机，所有桥接设置的虚拟机连接到这个交换机的一个接口上，物理主机也同样插在这个交换机当中，所以所有桥接下的网卡与网卡都是交换模式的，相互可以访问而不干扰。在桥接模式下，虚拟机ip地址需要与主机在同一个网段，如果需要联网，则网关与DNS需要与主机网卡一致。
 
-![https://note.youdao.com/yws/public/resource/236896997b6ffbaa8e0d92eacd13abbf/8151318698234E84A9952FF27E73AC44](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/8151318698234E84A9952FF27E73AC44)
+
 
 **2、NAT模式，虚拟机可以访问宿主机和网络，宿主机不能访问虚拟机。**
 
@@ -58,30 +58,30 @@
 
 ​    在NAT模式中，主机网卡直接与虚拟NAT设备相连，然后虚拟NAT设备与虚拟DHCP服务器一起连接在虚拟交换机VMnet8上，这样就实现了虚拟机联网。那么我们会觉得很奇怪，为什么需要虚拟网卡VMware Network Adapter VMnet8呢？原来我们的VMware Network Adapter VMnet8虚拟网卡主要是为了实现主机与虚拟机之间的通信。
 
-![https://note.youdao.com/yws/public/resource/236896997b6ffbaa8e0d92eacd13abbf/D9D67F69F39B47F2ACBF8C29383E33DC](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/D9D67F69F39B47F2ACBF8C29383E33DC)
 
-![https://note.youdao.com/yws/public/resource/236896997b6ffbaa8e0d92eacd13abbf/D9F4EAFA17D04025949A8100760B4B6B](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/D9F4EAFA17D04025949A8100760B4B6B)
 
-![https://note.youdao.com/yws/public/resource/236896997b6ffbaa8e0d92eacd13abbf/167E95C63FBB45DA8FB1B1A6EA98AF36](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/167E95C63FBB45DA8FB1B1A6EA98AF36)
+
+
+
 
 **3、Host-Only模式，虚拟机和宿主机可以互相访问，但是虚拟机不能访问网络。**
 
 ​    Host-Only模式其实就是NAT模式去除了虚拟NAT设备，然后使用VMware Network Adapter VMnet1虚拟网卡连接VMnet1虚拟交换机来与虚拟机通信的，Host-Only模式将虚拟机与外网隔开，使得虚拟机成为一个独立的系统，只与主机相互通讯。
 
-![https://note.youdao.com/yws/public/resource/236896997b6ffbaa8e0d92eacd13abbf/9A71328903184374A84E0097D6776105](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/9A71328903184374A84E0097D6776105)
+
 
 ​    
 
 #### [NAT模式下，虚拟机无法ping通物理机](https://bbs.csdn.net/topics/391861844)
 
 虚拟机A1、A2是主机A中的虚拟机，虚拟机B1是主机B中的虚拟机。其中的“NAT路由器”是只启用了NAT功能的路由器，用来把VMnet8交换机上连接的计算机通过NAT功能连接到VMnet0虚拟交换机。A1、A2、B1设置为NAT方式，此时A1、A2可以单向访问主机B、C，而B、C不能访问A1、A2；B1可以单向访问主机A、C，而A、C不能访问B1；A1、A2与A，B1与B可以互访。
-![img](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/1447937435_669638.jpg)
+
 
 #### [Linux 下VMWare虚拟机下的几种网络连接方式以及和windows之间的文件传输](https://www.iteye.com/blog/wangshirufeng-2276231)
 
-![image-20220214202355316](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/image-20220214202355316.png)
 
-![image-20220214202402820](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/image-20220214202402820.png)
+
+
 
 设置IP地址的时候 以下不能使用：
 192.168.191.0   代表网络号

@@ -282,7 +282,7 @@ rpm -aq | grep audit
 rpm -ql audit
 ```
 
-![image-20210728093842557](D:\file_place\notebook\常用的指令.assets\image-20210728093842557.png)
+
 
 ##### 2、配置audit.rules规则
 
@@ -296,7 +296,7 @@ auditctl -l
 auditctl -h
 ```
 
-![image-20210728093909529](D:\file_place\notebook\常用的指令.assets\image-20210728093909529.png)
+
 
 例如添加一条规则
 
@@ -308,7 +308,7 @@ auditctl -w /data -p rwxa
 rwxa ： 指定的触发条件，r 读取权限，w 写入权限，x 执行权限，a 属性（attr）*/
 ```
 
-![image-20210728093927449](D:\file_place\notebook\常用的指令.assets\image-20210728093927449.png)
+
 
 ##### 3、永久保存审计规则
 
@@ -319,7 +319,7 @@ service auditd restart
 auditctl -l
 ```
 
-![image-20210728094134294](D:\file_place\notebook\常用的指令.assets\image-20210728094134294.png)
+
 
 ##### 4、审计效果
 
@@ -329,7 +329,7 @@ auditctl -l
 tail -f /var/log/audit/audit.log
 ```
 
-![image-20210728094007311](D:\file_place\notebook\常用的指令.assets\image-20210728094007311.png)
+
 
 ##### 5、实现将audit日志通过rsyslog转发给日志服务器
 
@@ -345,7 +345,7 @@ args = LOG_LOCAL0
 service auditd restart
 ```
 
-![image-20210728094159785](D:\file_place\notebook\常用的指令.assets\image-20210728094159785.png)
+
 
 ###### 2)audit审计日志还会输出到/var/log/message文件中
 
@@ -362,11 +362,11 @@ vi /etc/rsyslog.conf
 service rsyslog restart
 ```
 
-![image-20210728094233668](D:\file_place\notebook\常用的指令.assets\image-20210728094233668.png)
+
 
 ###### 3)效果验证 如下图所示，审计日志只输出到日志服务器，未打印到/var/log/messages中
 
-![image-20210728094251623](D:\file_place\notebook\常用的指令.assets\image-20210728094251623.png)
+
 
 ### 系统日志
 

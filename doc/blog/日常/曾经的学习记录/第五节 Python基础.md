@@ -74,7 +74,7 @@ if __name__ == '__main__':
 
 
 
-![在这里插入图片描述](D:\file_place\Typora\安全运维学习\第五节 Python基础.assets\20180926120302929)
+
 
 
 
