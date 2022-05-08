@@ -3,6 +3,7 @@
 version: 2
 
 python:
+  version: '3.9'
   install:
     - requirements: docs/requirements.txt
     - method: pip
@@ -13,7 +14,7 @@ python:
 #      path: another/package
   system_packages: true
 
-
-build:
-  tools:
-    python: "3.9"
+#
+#build:
+#  tools:
+#    python: "3.9"
