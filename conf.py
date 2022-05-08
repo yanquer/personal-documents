@@ -56,10 +56,10 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 #
 # html_theme = 'alabaster'
 html_theme = 'sphinx_rtd_theme'
-extensions = ['recommonmark', ] 	# 'sphinx_markdown_tables' , 在 readthedocs 构建没有这个模块，吐了
-source_parsers = {
-    '.md': 'recommonmark.parser.CommonMarkParser',
-}
+extensions = ['recommonmark', 'sphinx_markdown_tables'] 	# 'sphinx_markdown_tables' , 在 readthedocs 构建没有这个模块，吐了
+# source_parsers = {
+#     '.md': 'recommonmark.parser.CommonMarkParser',
+# }
 source_suffix = {'.rst': 'restructuredtext', '.md': 'markdown'}
 
 # Add any paths that contain custom static files (such as style sheets) here,
