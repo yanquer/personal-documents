@@ -1,8 +1,8 @@
-### root 密码忘记
+## root 密码忘记
 
 查看 /etc/shadow 使用的加密机制
 
-```sh
+```
 authconfig --test | grep hashing
 ```
 

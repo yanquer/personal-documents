@@ -1,4 +1,4 @@
-### SQL四种语言：DDL,DML,DCL,TCL
+## SQL四种语言：DDL,DML,DCL,TCL
 
 参考： [SQL四种语言：DDL,DML,DCL,TCL](https://www.cnblogs.com/henryhappier/archive/2010/07/05/1771295.html)
 

@@ -28,7 +28,7 @@
 
 方法一：只需要将列表生成式的 [] 换成 () 即可
 
-```python
+```
 g = (x * x for x in range(10))
 ```
 
@@ -36,7 +36,7 @@ g = (x * x for x in range(10))
 
 方法二：函数使用 yield 关键字，那么这个函数将是一个 generator
 
-```python
+```
 def g():
 	a = {id:0 for id in range(10)}
 	for k, v in a.items():
@@ -73,7 +73,7 @@ def g():
 
 ### 列表生成式
 
-```python
+```
 a = [x * x for x in range(10)]
 ```
 
@@ -83,7 +83,7 @@ a = [x * x for x in range(10)]
 
 ### 字典生成式
 
-```python
+```
 a = {id:0 for id in range(10)}
 ```
 
@@ -192,7 +192,7 @@ An object capable of returning its members one at a time. Examples of iterables 
 
 一个函数不止有他的执行语句，还有着 `__name__`（函数名），`__doc__` （说明文档）等属性，
 
-```python3
+```
 def decorator(func):
     def wrapper(*args, **kwargs):
         """doc of wrapper"""
@@ -212,7 +212,7 @@ print(say_hello.__doc__)
 
 
 
-```text
+```
 wrapper
 doc of wrapper
 ```
@@ -223,7 +223,7 @@ doc of wrapper
 
 解决这一问题的办法是通过 `functools` 模块下的 `wraps` 装饰器。
 
-```python3
+```
 from functools import wraps
 
 def decorator(func):
@@ -246,7 +246,7 @@ print(say_hello.__doc__)
 
 
 
-```text
+```
 say_hello
 doc of say hello
 ```
@@ -263,7 +263,7 @@ doc of say hello
 
 `property` 装饰器用于类中的函数，使得我们可以像访问属性一样来获取一个函数的返回值。
 
-```python3
+```
 class XiaoMing:
     first_name = '明'
     last_name = '小'
@@ -278,7 +278,7 @@ print(xiaoming.full_name)
 
 
 
-```text
+```
 小明
 ```
 
@@ -288,7 +288,7 @@ print(xiaoming.full_name)
 
 `staticmethod` 装饰器同样是用于类中的方法，这表示这个方法将会是一个静态方法，意味着该方法可以直接被调用无需实例化，但同样意味着它没有 `self` 参数，也无法访问实例化后的对象。
 
-```python3
+```
 class XiaoMing:
     @staticmethod
     def say_hello():
@@ -308,7 +308,7 @@ xiaoming.say_hello()
 
 `classmethod` 依旧是用于类中的方法，这表示这个方法将会是一个类方法，意味着该方法可以直接被调用无需实例化，但同样意味着它没有 `self` 参数，也无法访问实例化后的对象。相对于 `staticmethod` 的区别在于它会接收一个指向类本身的 `cls` 参数。
 
-```python3
+```
 class XiaoMing:
     name = '小明'
 
@@ -322,7 +322,7 @@ XiaoMing.say_hello()
 
 
 
-```text
+```
 同学你好， 我是小明
 <class '__main__.XiaoMing'>
 ```
@@ -333,7 +333,7 @@ XiaoMing.say_hello()
 
 类能实现装饰器的功能， 是由于当我们调用一个对象时，实际上调用的是它的 `__call__` 方法。
 
-```python3
+```
 class Demo:
     def __call__(self):
         print('我是 Demo')
@@ -344,13 +344,13 @@ demo()
 
 
 
-```text
+```
 我是 Demo
 ```
 
 通过这个特性，我们便可以用类的方式来完成装饰器，功能与刚开始用函数实现的一致。
 
-```python3
+```
 class Decorator:
     def __init__(self, func):
         self.func = func
@@ -368,7 +368,7 @@ say_hello()
 
 
 
-```text
+```
 123
 同学你好
 ```

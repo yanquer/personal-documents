@@ -1,10 +1,13 @@
+
+## SSH
+
 ### SSH
 
 设置会话过期
 
 /etc/ssh/sshd_config
 
-```sh
+```
 ServerAliveInterval 60        # 单次发送包检查链接时间，单位是秒，为0表示不发
 ServerAliveCountMax 30        # 最大检查次数，超过后断开链接
 ```
@@ -16,7 +19,7 @@ ServerAliveCountMax 30        # 最大检查次数，超过后断开链接
 
 /etc/profile
 
-```sh
+```
 TMOUT=60    # 空闲等待时间，默认值0，表示不超时
 ```
 
@@ -28,13 +31,13 @@ TMOUT=60    # 空闲等待时间，默认值0，表示不超时
 
 我们可以使用 SSH 默认配置文件来创建 SSH 别名。为此，编辑 `~/.ssh/config` 文件（如果此文件不存在，只需创建一个）：
 
-```text
+```
 $ vi ~/.ssh/config
 ```
 
 添加所有远程主机的详细信息，如下所示：
 
-```text
+```
 Host webserver
     HostName 192.168.225.22
     User sk
@@ -55,7 +58,7 @@ Host dhcp
 
 打开 `~/.bashrc` 或者 `~/.bash_profile` 文件：
 
-```text
+```
 alias webserver='ssh sk@server.example.com'
 alias dns='ssh sk@server.example.com'
 alias dhcp='ssh sk@server.example.com -p 2233'
@@ -66,19 +69,19 @@ alias ubuntu='ssh sk@server.example.com -i ~/.ssh/id_rsa_remotesystem'
 
 然后，使用命令应用更改：
 
-```text
+```
 $ source ~/.bashrc
 ```
 
 或者
 
-```text
+```
 $ source ~/.bash_profile
 ```
 
 在此方法中，你甚至不需要使用 `ssh 别名` 命令。相反，只需使用别名，如下所示。
 
-```text
+```
 $ webserver
 $ dns
 $ dhcp

@@ -4,7 +4,7 @@
 
 **关于字典：**
 
-```python
+```
 #当字典的元素个数少于1000时，应使用dData.keys(),dData.items(),dDate.values()
 #当字典的元素个数超过1000时，为了提高效率，可以使用dData.iterkeys(),dData.iteritems,dData.itervalues()
 #当没有把握时，采用第一种keys的方案
@@ -16,7 +16,7 @@
 
 **多个变量的赋值：**
 
-```python
+```
 a = b = c = 1
 #创建一个整型对象，值为1，三个变量被分配到相同的内存空间上
 a, b, c = 1, 2, "john"
@@ -27,7 +27,7 @@ a, b, c = 1, 2, "john"
 
 **Python 五个标准的数据类型**
 
-```python
+```
 Numbers				#数字
 String				#字符串
 List				#列表
@@ -39,7 +39,7 @@ Dictionary			#字典
 
 **Python支持四种不同的数字类型**
 
-```python
+```
 int					#有符号整型
 long				#长整型，也可以代表八进制或者十六进制
 float				#浮点型
@@ -54,7 +54,7 @@ python2.2之后int溢出后会自动自动转换为long，3中long被移除
 
 **argparse的使用**
 
-```python
+```
 #例子
 import argparse
 
@@ -80,7 +80,7 @@ if __name__ == '__main__':
 
 基本使用模板
 
-```python
+```
 #导入argparse
 import argparse
 
@@ -113,7 +113,7 @@ parser.add_argument('-n', defalut=1, required=True, type=int, choices=[1,2,3], h
 
 **time模块函数**
 
-```python
+```
 strptime
 #p表示parse，表示分析的意思，所以strptime是给定一个时间字符串和分析模式，返回一个时间对象。
 
@@ -139,7 +139,7 @@ timestamp2 = int(time.mktime(timeArray2))
 
 **字符串的操作**
 
-```python
+```
 #截取字符串
 str = 'hello'
 print str[1:4]				#ell

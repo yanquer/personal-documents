@@ -1,10 +1,11 @@
+
 ## 指令
 
 （以下排名以字母顺序）
 
 ### adjtimex
 
-```tex
+```
     linux系统有两个时钟：一个是由主板电池驱动的“Real Time Clock”也叫做RTC或者叫CMOS时钟，硬件时钟。当操作系统关机的时候，用这个来记录时间，但是对于运行的系统是不用这个时间的。另一个时间是 “System clock”也叫内核时钟或者软件时钟，是由软件根据时间中断来进行计数的，内核时钟在系统关机的情况下是不存在的，所以，当操作系统启动的时候，内核时钟是要读取RTC时间来进行时间同步（有些情况下，内核时钟也可以通过ntp服务器来读取时间） 这两个时钟通常会有一些误差，所以长时间可以导致这两个时钟偏离的比较多，最简单的保持两个时间同步的方法是用软件测出他们之间的误差率，然后用软件进行修正。
 ————————————————
 adjtimex
@@ -38,7 +39,7 @@ alias lm='ls -al | more'
 
 列出软件的安装来源
 
-```sh
+```
 apt-cache madison $soft    # 搜索源里面的可用版本
 apt-cache policy $sofy    # 比上面那个详细一点
 apt-cache showpkg $soft    # 比上一个更详细，还会列出所有相关的
@@ -51,7 +52,7 @@ apt-cache show $soft    # 显示指定包的详情 dpkg -s $soft也可以
 
 模拟安装
 
-```sh
+```
 apt-get install -s $soft 
 ```
 
@@ -75,13 +76,13 @@ arp 命令用于显示和修改 IP 到 MAC 转换表
 
 **语法**
 
-```shell
+```
 arp（选项）（参数）
 ```
 
 **选项**
 
-```shell
+```
 -a # 主机 ：显示 arp 缓冲区的所有条目；
 -H # 地址类型 ：指定 arp 指令使用的地址类型；
 -D # 使用指定接口的硬件地址；
@@ -94,7 +95,7 @@ arp（选项）（参数）
 -v  # 显示详细的 arp 缓冲区条目，包括缓冲区条目的统计信息；
 ```
 
-```sh
+```
 [root@cs6 ~]# arp -n
 
 Address HWtype HWaddress Flags Mask Iface
@@ -122,7 +123,7 @@ lface：网络接口。
 > 
 > 安装
 > 
-> ```sh
+> ```
 > yum install audit
 > #要么 
 > up2date install audit
@@ -170,19 +171,19 @@ lface：网络接口。
 
 基于用户root搜索审计记录
 
-```sh
+```
 [root@localhost ~]# ausearch  -ui 0
 ```
 
 基于终端tty1搜索审计记录
 
-```sh
+```
 [root@localhost ~]# ausearch -tm tty1
 ```
 
 基于进程号1779搜索审计记录
 
-```sh
+```
 [root@localhost ~]# ausearch -p 1779
 ```
 
@@ -211,7 +212,7 @@ lface：网络接口。
 
 说明：ANPG表示第一个支持变量的工具，[A]=awk、[N]=nawk、[P]=POSIXawk、[G]=gawk
 
-```shell
+```
  **$n**  当前记录的第n个字段，比如n为1表示第一个字段，n为2表示第二个字段。 
  **$0**  这个变量包含执行过程中当前行的文本内容。
 [N]  **ARGC**  命令行参数的数目。
@@ -240,14 +241,14 @@ BEGIN末尾的非0数字表示输出
 
 这里非0数字可以理解为true
 
-```sh
+```
 echo -e "111\n222" | awk -v a=3 -v val=god 'BEGIN{FS=OFS=","}{$a=val}1'
 
 111,,god
 222,,god
 ```
 
-```shell
+```
 #awk中$NF是什么意思？
 #pwd
 /usr/local/etc
@@ -388,7 +389,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 1，RS是记录分隔符，默认的分隔符是\n，具体用法看下
 
-```cpp
+```
 [root@krlcgcms01 mytest]# cat test1     //测试文件
  111 222
  333 444
@@ -397,7 +398,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 2，RS默认分割符\n
 
-```dart
+```
 [root@krlcgcms01 mytest]# awk '{print $0}' test1  //awk 'BEGIN{RS="\n"}{print $0}' test1 这二个是一样的
 111 222
 333 444
@@ -408,7 +409,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 3，自定义RS分割符
 
-```ruby
+```
 [zhangy@localhost test]$ echo "111 222|333 444|555 666"|awk 'BEGIN{RS="|"}{print $0,RT}'
  111 222 |
  333 444 |
@@ -419,7 +420,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 4，RS也可能是正则表达式
 
-```bash
+```
 [zhangy@localhost test]$ echo "111 222a333 444b555 666"|awk 'BEGIN{RS="[a-z]+"}{print $1,RS,RT}'
  111 [a-z]+ a
  333 [a-z]+ b
@@ -430,7 +431,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 5，RS为空时
 
-```dart
+```
 [zhangy@localhost test]$ cat -n test2
  1  111 222
  2
@@ -457,7 +458,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 **把ORS理解成RS反过程，这样更容易记忆和理解**，看下面的例子。
 
-```dart
+```
 [zhangy@localhost test]$ awk 'BEGIN{ORS="\n"}{print $0}' test1  //awk '{print $0}' test1二者是一样的
 111 222
 333 444
@@ -470,7 +471,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 1，FS指定列分割符
 
-```bash
+```
 [zhangy@localhost test]$ echo "111|222|333"|awk '{print $1}'
  111|222|333
 [zhangy@localhost test]$ echo "111|222|333"|awk 'BEGIN{FS="|"}{print $1}'
@@ -479,14 +480,14 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 2，FS也可以用正则
 
-```ruby
+```
 [zhangy@localhost test]$ echo "111||222|333"|awk 'BEGIN{FS="[|]+"}{print $1}'
 111
 ```
 
 3，FS为空的时候
 
-```ruby
+```
 [zhangy@localhost test]$ echo "111|222|333"|awk 'BEGIN{FS=""}{NF++;print $0}'
 1 1 1 | 2 2 2 | 3 3 3
 ```
@@ -495,7 +496,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 4，RS被设定成非\n时，\n会成FS分割符中的一个
 
-```dart
+```
 [zhangy@localhost test]$ cat test1
  111 222
  333 444
@@ -509,7 +510,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 5，OFS列输出分隔符
 
-```dart
+```
 [zhangy@localhost test]$ awk 'BEGIN{OFS="|";}{print $1,$2}' test1
  111|222
  333|444
@@ -522,7 +523,7 @@ PS：RS、ORS、FS、OFS的英文解释绝不是这样的，这里只是解释�
 
 **test1只有二列，如果100列，都写出来太麻烦了吧。**
 
-```ruby
+```
 [zhangy@localhost test]$ awk 'BEGIN{OFS="|";}{print $0}' test1
  111 222
  333 444
@@ -561,7 +562,7 @@ basename $WORKFILE
 
 ### cd
 
-```bash
+```
 # 返回最近一次的目录
 cd -
 ```
@@ -572,13 +573,13 @@ cd -
 
 **语法**
 
-```shell
+```
 chage [选项] 用户名
 ```
 
 **选项**
 
-```shell
+```
 -m：密码可更改的最小天数。为零时代表任何时候都可以更改密码。
 -M：密码保持有效的最大天数。
 -w：用户密码到期前，提前收到警告信息的天数。
@@ -590,7 +591,7 @@ chage [选项] 用户名
 
 我的服务器root帐户密码策略信息如下：
 
-```shell
+```
 [root@linuxde ~]# chage -l root
 最近一次密码修改时间                    ： 3月 12, 2013
 密码过期时间                            ：从不
@@ -603,7 +604,7 @@ chage [选项] 用户名
 
 我可以通过如下命令修改我的密码过期时间：
 
-```shell
+```
 [root@linuxde ~]# chage -M 60 root
 [root@linuxde ~]# chage -l root
 最近一次密码修改时间                          ： 3月 12, 2013
@@ -617,7 +618,7 @@ chage [选项] 用户名
 
 然后通过如下命令设置密码失效时间：
 
-```shell
+```
 [root@linuxde ~]# chage -I 5 root
 [root@linuxde ~]# chage -l root
 最近一次密码修改时间                          ： 3月 12, 2013
@@ -689,7 +690,7 @@ chattr +a /var/log/messages
 
 ### chown
 
-```tex
+```
 #变更文件或目录的拥有者或所属群组
 #用户：组：指定所有者和所属工作组。当省略“：组”，仅改变文件所有者；
 #文件：指定要改变所有者和工作组的文件列表。支持多个文件和目标，支持shell通配符。
@@ -721,7 +722,7 @@ chown -R user:group  file
 
 ls -l查看文件格式一共有10位
 
-```sh
+```
 9 8 7 6 5 4 3 2 1 0
 - r w x r - x r - x
 
@@ -757,7 +758,7 @@ x表示可执行，可运行文件
 
 其实在unix下，文件权限用12个二进制位表示
 
-```sh
+```
 11 10 9 8 7 6 5 4 3 2 1 0
  S  G T r w x r w x r w x
 
@@ -770,7 +771,7 @@ x表示可执行，可运行文件
 
 读取未加密的密码，然后将加密后的密码写入 /etc/shadow
 
-```sh
+```
 echo 'qwe123' | chpasswd
 ```
 
@@ -819,7 +820,7 @@ prog.o.bak prog.o differ: char 4, line 1
 
 command -v 可以判断一个命令是否支持，如果一个脚本需要，或者还要家if判断
 
-```sh
+```
 if command -v python ;then
     echo yes
 fi
@@ -833,7 +834,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
 
 不带有任何参数时，curl 就是发出 GET 请求。
 
-> ```bash
+> ```
 > $ curl https://www.example.com
 > ```
 
@@ -841,13 +842,13 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-A`参数指定客户端的用户代理标头，即`User-Agent`。curl 的默认用户代理字符串是`curl/[version]`。
   
-  > ```bash
+  > ```
   > $ curl -A 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.100 Safari/537.36' https://google.com
   > ```
   
   上面命令将`User-Agent`改成 Chrome 浏览器。
   
-  > ```bash
+  > ```
   > $ curl -A '' https://google.com
   > ```
   
@@ -855,7 +856,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   也可以通过`-H`参数直接指定标头，更改`User-Agent`。
   
-  > ```bash
+  > ```
   > $ curl -H 'User-Agent: php/1.0' https://google.com
   > ```
 
@@ -863,19 +864,19 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-b`参数用来向服务器发送 Cookie。
   
-  > ```bash
+  > ```
   > $ curl -b 'foo=bar' https://google.com
   > ```
   
   上面命令会生成一个标头`Cookie: foo=bar`，向服务器发送一个名为`foo`、值为`bar`的 Cookie。
   
-  > ```bash
+  > ```
   > $ curl -b 'foo1=bar;foo2=bar2' https://google.com
   > ```
   
   上面命令发送两个 Cookie。
   
-  > ```bash
+  > ```
   > $ curl -b cookies.txt https://www.google.com
   > ```
   
@@ -885,7 +886,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-c`参数将服务器设置的 Cookie 写入一个文件。
   
-  > ```bash
+  > ```
   > $ curl -c cookies.txt https://www.google.com
   > ```
   
@@ -895,7 +896,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-d`参数用于发送 POST 请求的数据体。
   
-  > ```bash
+  > ```
   > $ curl -d'login=emma＆password=123'-X POST https://google.com/login
   > # 或者
   > $ curl -d 'login=emma' -d 'password=123' -X POST  https://google.com/login
@@ -905,7 +906,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-d`参数可以读取本地文本文件的数据，向服务器发送。
   
-  > ```bash
+  > ```
   > $ curl -d '@data.txt' https://google.com/login
   > ```
   
@@ -915,7 +916,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `--data-urlencode`参数等同于`-d`，发送 POST 请求的数据体，区别在于会自动将发送的数据进行 URL 编码。
   
-  > ```bash
+  > ```
   > $ curl --data-urlencode 'comment=hello world' https://google.com/login
   > ```
   
@@ -925,7 +926,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-e`参数用来设置 HTTP 的标头`Referer`，表示请求的来源。
   
-  > ```bash
+  > ```
   > curl -e 'https://google.com?q=example' https://www.example.com
   > ```
   
@@ -933,7 +934,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-H`参数可以通过直接添加标头`Referer`，达到同样效果。
   
-  > ```bash
+  > ```
   > curl -H 'Referer: https://google.com?q=example' https://www.example.com
   > ```
 
@@ -941,7 +942,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-F`参数用来向服务器上传二进制文件。
   
-  > ```bash
+  > ```
   > $ curl -F 'file=@photo.png' https://google.com/profile
   > ```
   
@@ -949,7 +950,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-F`参数可以指定 MIME 类型。
   
-  > ```bash
+  > ```
   > $ curl -F 'file=@photo.png;type=image/png' https://google.com/profile
   > ```
   
@@ -957,7 +958,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-F`参数也可以指定文件名。
   
-  > ```bash
+  > ```
   > $ curl -F 'file=@photo.png;filename=me.png' https://google.com/profile
   > ```
   
@@ -967,7 +968,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-G`参数用来构造 URL 的查询字符串。
   
-  > ```bash
+  > ```
   > $ curl -G -d 'q=kitties' -d 'count=20' https://google.com/search
   > ```
   
@@ -975,7 +976,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   如果数据需要 URL 编码，可以结合`--data--urlencode`参数。
   
-  > ```bash
+  > ```
   > $ curl -G --data-urlencode 'comment=hello world' https://www.example.com
   > ```
 
@@ -983,19 +984,19 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-H`参数添加 HTTP 请求的标头。
   
-  > ```bash
+  > ```
   > $ curl -H 'Accept-Language: en-US' https://google.com
   > ```
   
   上面命令添加 HTTP 标头`Accept-Language: en-US`。
   
-  > ```bash
+  > ```
   > $ curl -H 'Accept-Language: en-US' -H 'Secret-Message: xyzzy' https://google.com
   > ```
   
   上面命令添加两个 HTTP 标头。
   
-  > ```bash
+  > ```
   > $ curl -d '{"login": "emma", "pass": "123"}' -H 'Content-Type: application/json' https://google.com/login
   > ```
   
@@ -1005,7 +1006,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-i`参数打印出服务器回应的 HTTP 标头。
   
-  > ```bash
+  > ```
   > $ curl -i https://www.example.com
   > ```
   
@@ -1015,7 +1016,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-I`参数向服务器发出 HEAD 请求，然会将服务器返回的 HTTP 标头打印出来。
   
-  > ```bash
+  > ```
   > $ curl -I https://www.example.com
   > ```
   
@@ -1023,7 +1024,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `--head`参数等同于`-I`。
   
-  > ```bash
+  > ```
   > $ curl --head https://www.example.com
   > ```
 
@@ -1031,7 +1032,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-k`参数指定跳过 SSL 检测。
   
-  > ```bash
+  > ```
   > $ curl -k https://www.example.com
   > ```
   
@@ -1041,7 +1042,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-L`参数会让 HTTP 请求跟随服务器的重定向。curl 默认不跟随重定向。
   
-  > ```bash
+  > ```
   > $ curl -L -d 'tweet=hi' https://api.twitter.com/tweet
   > ```
 
@@ -1049,7 +1050,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `--limit-rate`用来限制 HTTP 请求和回应的带宽，模拟慢网速的环境。
   
-  > ```bash
+  > ```
   > $ curl --limit-rate 200k https://google.com
   > ```
   
@@ -1059,7 +1060,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-o`参数将服务器的回应保存成文件，等同于`wget`命令。
   
-  > ```bash
+  > ```
   > $ curl -o example.html https://www.example.com
   > ```
   
@@ -1069,7 +1070,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-O`参数将服务器回应保存成文件，并将 URL 的最后部分当作文件名。
   
-  > ```bash
+  > ```
   > $ curl -O https://www.example.com/foo/bar.html
   > ```
   
@@ -1079,7 +1080,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-s`参数将不输出错误和进度信息。
   
-  > ```bash
+  > ```
   > $ curl -s https://www.example.com
   > ```
   
@@ -1087,7 +1088,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   如果想让 curl 不产生任何输出，可以使用下面的命令。
   
-  > ```bash
+  > ```
   > $ curl -s -o /dev/null https://google.com
   > ```
 
@@ -1095,7 +1096,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-S`参数指定只输出错误信息，通常与`-s`一起使用。
   
-  > ```bash
+  > ```
   > $ curl -s -o /dev/null https://google.com
   > ```
   
@@ -1105,7 +1106,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-u`参数用来设置服务器认证的用户名和密码。
   
-  > ```bash
+  > ```
   > $ curl -u 'bob:12345' https://google.com/login
   > ```
   
@@ -1113,13 +1114,13 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   curl 能够识别 URL 里面的用户名和密码。
   
-  > ```bash
+  > ```
   > $ curl https://bob:12345@google.com/login
   > ```
   
   上面命令能够识别 URL 里面的用户名和密码，将其转为上个例子里面的 HTTP 标头。
   
-  > ```bash
+  > ```
   > $ curl -u 'bob' https://google.com/login
   > ```
   
@@ -1129,13 +1130,13 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-v`参数输出通信的整个过程，用于调试。
   
-  > ```bash
+  > ```
   > $ curl -v https://www.example.com
   > ```
   
   `--trace`参数也可以用于调试，还会输出原始的二进制数据。
   
-  > ```bash
+  > ```
   > $ curl --trace - https://www.example.com
   > ```
 
@@ -1143,7 +1144,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-x`参数指定 HTTP 请求的代理。
   
-  > ```bash
+  > ```
   > $ curl -x socks5://james:cats@myproxy.com:8080 https://www.example.com
   > ```
   
@@ -1151,7 +1152,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   如果没有指定代理协议，默认为 HTTP。
   
-  > ```bash
+  > ```
   > $ curl -x james:cats@myproxy.com:8080 https://www.example.com
   > ```
   
@@ -1161,7 +1162,7 @@ curl 是常用的命令行工具，用来请求 Web 服务器。它的名字就�
   
   `-X`参数指定 HTTP 请求的方法。
   
-  > ```bash
+  > ```
   > $ curl -X POST https://www.example.com
   > ```
   
@@ -1262,7 +1263,7 @@ cut（选项）（参数）
 
 ### dd
 
-```tex
+```
 dd
 复制文件并对原文件的内容进行转换和格式化处理
 
@@ -1280,7 +1281,7 @@ dd
     --version：显示版本信息。
 ```
 
-```shell
+```
 #例如：
 #生成10g的大文件：
 dd if=/dev/zero of=test bs=1M count=0 seek=10000    #不占空间
@@ -1299,13 +1300,13 @@ dd if=/dev/zero of=test bs=10G count=1
 
 > du，disk usage,是通过搜索文件来计算每个文件的大小然后累加，du能看到的文件只是一些当前存在的，没有被删除的。他计算的大小就是当前他认为存在的所有文件大小的累加和。
 
-```sh
+```
 -s            # 指定文件系统中所有的目录、符号链接和文件使用的块数累加得到该文件系统使用的总块数
 ```
 
 **与df区别**
 
-```sh
+```
 [root@www ~]# du -sh /home
 4.7G    /home
 [root@www ~]# df -h /home
@@ -1372,7 +1373,7 @@ man dpkg
 
 关于选项 l 的结果解析（可以通过 dpkg -l | head -n 3 查看）
 
-```sh
+```
 Desired=Unknown/Install/Remove/Purge/Hold                                     
 | Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend
 |/ Err?=(none)/Reinst-required (Status,Err: uppercase=bad)                
@@ -1415,7 +1416,7 @@ Desired=Unknown/Install/Remove/Purge/Hold
 1. ii 表示软件正常安装
 2. rc表示软件已卸载，可是配置文件还在，可以通过以下命令进行清理。
 
-```sh
+```
 dpkg -l | grep ^rc | cut -d' ' -f3 | sudo xargs dpkg --purge
 ```
 
@@ -1442,7 +1443,7 @@ echo(选项)(参数)选项
 
 **关于颜色输出**
 
-```shell
+```
 #格式: 
 echo -e "\033[字背景颜色;字体颜色m字符串\033[0m" 
 
@@ -1453,7 +1454,7 @@ echo -e "\e[1;31m 内容 \e[0m"
 #颜色码：重置=0，黑色=30，红色=31，绿色=32，黄色=33，蓝色=34，洋红=35，青色=36，白色=37
 ```
 
-```tex
+```
 字背景颜色范围:40----49 
 40:黑 
 41:深红 
@@ -1504,7 +1505,7 @@ echo -e "\e[1;31m 内容 \e[0m"
 
 edit quota 缩写，用于修改用户和群组的配额限制参数，包括磁盘容量和文件个数限制、软限制和硬限制值、宽限时间，该命令的基本格式有以下 3 种：
 
-```sh
+```
 [root@localhost ~]# edquota [-u 用户名] [-g 群组名]
 [root@localhost ~]# edquota -t
 [root@localhost ~]# edquota -p 源用户名 -u 新用户名
@@ -1521,7 +1522,7 @@ edit quota 缩写，用于修改用户和群组的配额限制参数，包括磁
 
 例如，以用户 myquota 为例，通过如下命令配置此命令的 Quota：
 
-```sh
+```
 [root@localhost ~]# edquota -u myquota
 Disk quotas for user myquota (uid 710):
  Filesystem  blocks soft  hard inodes soft hard
@@ -1544,7 +1545,7 @@ Disk quotas for user myquota (uid 710):
 
 【例 1】 修改用户 myquota 的软限制值和硬限制值。
 
-```sh
+```
 [root@localhost ~]# edquota -u myquota
 Disk quotas for user myquota (uid 710):
  Filesystem  blocks  soft  hard inodes soft hard
@@ -1553,7 +1554,7 @@ Disk quotas for user myquota (uid 710):
 
 【例 2】 修改群组 mygrpquota 的配额。
 
-```sh
+```
 [root@localhost ~]# edquota -g mygrpquota
 Disk quotas for group mygrpquota (gid 713):
  Filesystem  blocks  soft   hard inodes soft hard
@@ -1562,7 +1563,7 @@ Disk quotas for group mygrpquota (gid 713):
 
 【例 3】修改宽限天数。
 
-```sh
+```
 [root@localhost ~]# edquota -t
 Grace period before enforcing soft limits for users:
 Time units may be: days, hours, minutes, or seconds
@@ -1584,7 +1585,7 @@ Time units may be: days, hours, minutes, or seconds
 
 ### expr
 
-```shell
+```
 #Linux下的数字运算，例如
 expr 1 + 1        #输出2
 ```
@@ -1606,7 +1607,7 @@ expr 1 + 1        #输出2
 
 实战非交互式ssh连接：
 
-```sh
+```
 [root@qfedu script]# vim test.sh
 
 #!/bin/sh
@@ -1636,14 +1637,14 @@ Last login: Fri Aug 28 16:57:09 2019
 
 ### file
 
-```tex
+```
 查看文件信息
     -b：列出辨识结果时，不显示文件名称； binary为二进制
 ```
 
 ### find
 
-```shell
+```
 -type                            #指定类型
 find / -inum  inodenum            #查找指定inodenum
 ```
@@ -1658,7 +1659,7 @@ find / -inum  inodenum            #查找指定inodenum
 
 ### flock
 
-```tex
+```
 flock是Linux下的文件锁。
 当多个进程可能会对同样的数据执行操作时，这些进程需要保证其它进程没有也在操作，以免损坏数据。
 
@@ -1683,7 +1684,7 @@ flock是Linux下的文件锁。
 
 ### free
 
-```tex
+```
 free    #显示内存的使用情况
     -b # 以Byte为单位显示内存使用情况；
     -k # 以KB为单位显示内存使用情况；
@@ -1697,7 +1698,7 @@ free    #显示内存的使用情况
 
 ### grep
 
-```shell
+```
 -E                #在扩展正则模式下
 -P                #在Perl正则模式下
 -V                #将不匹配的过滤出来
@@ -1713,7 +1714,7 @@ free    #显示内存的使用情况
 
 ### head
 
-```tex
+```
 显示文件的开头部分。
     -n, --lines=[-]NUM    显示前NUM行而不是默认的10行；
                         如果NUM前有"-"，那么会打印除了文件末尾的NUM行以外的其他行。
@@ -1744,7 +1745,7 @@ iotop使用Python语言编写而成，要求Python2.5（及以上版本）和Lin
 
 **选项**
 
-```shell
+```
 -o：只显示有io操作的进程
 -b：批量显示，无交互，主要用作记录到文件。
 -n NUM：显示NUM次，主要用于非交互式模式。
@@ -1799,7 +1800,7 @@ iotop使用Python语言编写而成，要求Python2.5（及以上版本）和Lin
 
 `<BROADCAST,MULTICAST,UP,LOWER_UP>` 这个配置串告诉我们：
 
-```text
+```
 BROADCAST   该接口支持广播
 MULTICAST   该接口支持多播
 UP          网络接口已启用
@@ -1808,7 +1809,7 @@ LOWER_UP    网络电缆已插入，设备已连接至网络
 
 列出的其他值也告诉了我们很多关于接口的知识，但我们需要知道 `brd` 和 `qlen` 这些词代表什么意思。 所以，这里显示的是上面展示的 `ip` 信息的其余部分的翻译。
 
-```text
+```
 mtu 1500                                    最大传输单位（数据包大小）为1,500字节
 qdisc pfifo_fast                            用于数据包排队
 state UP                                    网络接口已启用
@@ -1830,7 +1831,7 @@ preferred_lft forever                       IPv6 地址的首选生存期
 
 用法
 
-```sh
+```
 ip [option] [动作] [指令]
 ```
 
@@ -1905,7 +1906,7 @@ add|del
 
 **命令**
 
-```shell
+```
 iptables
 
     -P                #设置默认策略:iptables -P INPUT (DROP
@@ -1930,7 +1931,7 @@ iptables
 
 **iptables的使用模板大致为**
 
-```shell
+```
 iptables -t 表名 <-A/I/D/R> 规则链名 [规则号] <-i/o 网卡名> -p 协议名 <-s 源IP/源子网> --sport 源端口 <-d 目标IP/目标子网> --dport 目标端口 -j 动作
 
 #-A 指定链的末尾新增一个指定的规则
@@ -1950,7 +1951,7 @@ iptables -t nat -A PERROUTING -p tcp -s 10.10.10.10 -m multiport --sport 67，68
 
 **iptables默认链**
 
-```shell
+```
 INPUT            #处理输入数据包
 OUTPUT            #处理输出数据包
 FORWARD            #处理转发数据包
@@ -1966,7 +1967,7 @@ POSTROUTING        #用于源地址转换（SNAT）
 
 **四种表**
 
-```shell
+```
 filter    #过滤功能，只能作用在三个链上面：INPUT,FORWARD,OUTPUT
 nat        #地址转换，只能作用在：PREROUTING,OUTPUT,POSTROUTING(centos 7中还有INPUT)
 mangle    #修改报文原数据，五个链都可以
@@ -1986,7 +1987,7 @@ postrouting        mangle --> nat
 
 **-j 的几种动作**
 
-```shell
+```
 ACCEPT        #接收数据包
 DROP        #丢弃数据包
 REDIRECT    #重定向，映射,透明代理
@@ -1998,7 +1999,7 @@ LOG            #日志记录
 
 **常用的一些命令**
 
-```shell
+```
 iptables -F        #清空所有的防火墙规则
 iptables -nvL    #查看三个链
 
@@ -2016,7 +2017,7 @@ iptables -L [-t 表名] [链名]    #列出已设置的规则
 可用于匹配非连续或连续端口；最多指定15个端口；
 实例
 
-```shell
+```
 iptables -A INPUT -p tcp -m multiport --dport 22,80 -j ACCEPT
 iptables -A OUTPUT -p tcp -m multiport --sport 22,80 -j ACCEPT
 ```
@@ -2028,7 +2029,7 @@ iptables -A OUTPUT -p tcp -m multiport --sport 22,80 -j ACCEPT
 匹配一段连续的地址而非整个网络时有用
 实例：
 
-```shell
+```
 iptables -A INPUT -p tcp -m iprange --src-range 192.168.118.0-192.168.118.60 --dport 22 -j ACCEPT
 iptables -A OUTPUT -p tcp -m iprange --dst-range 192.168.118.0-192.168.118.60 --sport 22 -j ACCEPT
 ```
@@ -2039,7 +2040,7 @@ iptables -A OUTPUT -p tcp -m iprange --dst-range 192.168.118.0-192.168.118.60 --
 能够屏蔽非法字符
 实例：
 
-```shell
+```
 #注意该条规则需要添加到OUTPUT链，当服务端返回数据报文检查到有关键字"sex"时，则丢弃该报文，可用于web敏感词过滤
 iptables -A OUTPUT -p tcp --dport 80 -m string --algo kmp --string "sex" -j DROP
 ```
@@ -2071,7 +2072,7 @@ iptables -A INPUT -p icmp -m limit --limit 10/minute --limit-burst 10 -j ACCEPT
     RELATED: 有关联关系的连接
     INVALID: 无法识别的连接
 
-```shell
+```
 #放行ssh的首次连接状态
 iptables -A INPUT -p tcp --dport 22 -m state --state NEW -j ACCEPT   
 ```
@@ -2102,7 +2103,7 @@ iptables-save：批量导出Linux防火墙规则，
 > 
 > ​            “COMMIT”表示提交前面的规则设置；
 
-```sh
+```
 # 这是注释
 *nat
 # 这表示下面这些是nat表中的配置
@@ -2135,7 +2136,7 @@ COMMIT
 
 iptables-restore：批量导入Linux防火墙规则
 
-> ```shell
+> ```
 > #例如
 > iptables-restore < /tmp/iptables.txt    #将/tmp/iptables.txt规则写入iptables
 > ```
@@ -2324,13 +2325,13 @@ LC_TELEPHONE
 
 ###### 语法
 
-```shell
+```
 lpr(选项)(参数)
 ```
 
 ###### 选项
 
-```shell
+```
 -E：与打印服务器连接时强制使用加密；
 -H：指定可选的打印服务器；
 -C：指定打印任务的名称；
@@ -2350,13 +2351,13 @@ lpr(选项)(参数)
 
 将man1和man2送到打印机lp进行打印：
 
-```shell
+```
 lpr -P lp man1 man2
 ```
 
 ### ls
 
-```shell
+```
 -l        #详细信息
 -t        #按时间排序
 -i        #输出innode信息
@@ -2377,7 +2378,7 @@ lpr -P lp man1 man2
 
 ### lsof
 
-```shell
+```
 #强大的查询工具，-i几乎万能（自吹）
 
 #关键选项
@@ -2408,13 +2409,13 @@ lpr -P lp man1 man2
 
 发送信息
 
-```sh
+```
 main -s '$标题' $username@$host < $file
 ```
 
 ### mkdir
 
-```shell
+```
 #创建文件夹
 -p     #如果没有则创建（多级目录的情况）
     #如果有 不作操作不报错
@@ -2472,7 +2473,7 @@ mount命令
 
 ### mydumper
 
-```bash
+```
 -B, --database              要备份的数据库，不指定则备份所有库
 -T, --tables-list           需要备份的表，名字用逗号隔开
 -o, --outputdir             备份文件输出的目录
@@ -2509,7 +2510,7 @@ mount命令
 
 ### myloader
 
-```bash
+```
 -d, --directory                   备份文件的文件夹
 -q, --queries-per-transaction     每次事物执行的查询数量，默认是1000
 -o, --overwrite-tables            如果要恢复的表存在，则先drop掉该表，使用该参数，需要备份时候要备份表结构
@@ -2528,7 +2529,7 @@ mount命令
 
 ### netstat
 
-```tex
+```
 打印Linux中网络系统的状态信息
     -a或--all：显示所有连线中的Socket；
     -A<网络类型>或--<网络类型>：列出该网络类型连线中的相关地址；
@@ -2556,7 +2557,7 @@ mount命令
     --ip或--inet：此参数的效果和指定"-A inet"参数相同。
 ```
 
-```shell
+```
 #列出所有端口 (包括监听和未监听的)
 netstat -a     #列出所有端口
 netstat -at    #列出所有tcp端口
@@ -2572,7 +2573,7 @@ netstat -antup    #显示所有 及 占用程序名
 
 安装
 
-```sh
+```
 apt install net-tools
 ```
 
@@ -2624,7 +2625,7 @@ nslookup [-query=[type]] [hostname|ip]
 
 ### ntpdate
 
-```shell
+```
 ntpdate -d ip                #检索ip是否可以作为ntp对时服务器
 ------------------
 
@@ -2705,7 +2706,7 @@ server host  [ key n ] [ version n ] [ prefer ] [ mode n ] [ minpoll n ] [ maxpo
 
 ### openssl
 
-```shell
+```
 #强大的安全套接字层密码库
 #利用它的随机功能来生成可以用作密码的随机字母字符串。
 openssl rand -base64 10
@@ -2846,13 +2847,13 @@ root pts/0 192.168.0.100  19:47 0.00s 0.06s 0.00s w
 
 ###### 语法
 
-```shell
+```
 pr(选项)(参数)
 ```
 
 ###### 选项
 
-```shell
+```
 -h<标题>：为页指定标题；
 -l<行数>：指定每页的行数。
 ```
@@ -2925,8 +2926,6 @@ X：采用旧式的Linux i386登陆格式显示程序状况。
 - Z    僵尸进程，进程已终止，但进程描述符存在，直到父进程调用wait4()系统调用后释放
 - W    没有足够的记忆体分页可分配 ，正在换页（2.6内核之前有效）
 
-![image-20220210133849898](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/image-20220210133849898.png)
-
 ### pv
 
 Pipe Viewer 显示当前在命令行执行的命令的进度信息，管道查看器
@@ -2993,13 +2992,11 @@ print working directory
 
 用于交互使用
 
-![image-20211127175054717](%E5%B8%B8%E7%94%A8%E7%9A%84%E6%8C%87%E4%BB%A4.assets/image-20211127175054717.png)
-
 ### readlink
 
 > [Linux](http://lib.csdn.net/base/linux)系统中一个常用工具，主要用来找出符号链接所指向的位置。
 
-```sh
+```
 -f             #递归跟随给出文件名的所有符号链接以标准化，除最后一个外所有组件必须存在。
             #简单地说，就是一直跟随符号链接，直到非符号链接的文件位置，
             #限制是最后必须存在一个非符号链接的文件。
@@ -3007,7 +3004,7 @@ print working directory
 
 ### rename
 
-```sh
+```
 #在Debian或者Ubuntu环境下使用的语法是：
 rename 's/stringx/stringy/' files
 
@@ -3026,7 +3023,7 @@ rename stringx stringy files
 
 **语法**
 
-```shell
+```
 rsync [OPTION]... SRC DEST
 rsync [OPTION]... SRC [USER@]host:DEST
 rsync [OPTION]... [USER@]HOST:SRC DEST
@@ -3046,7 +3043,7 @@ rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]
 
 **选项**
 
-```shell
+```
 -v, --verbose 详细模式输出。
 -q, --quiet 精简输出模式。
 -c, --checksum 打开校验开关，强制对文件传输进行校验。
@@ -3148,13 +3145,13 @@ rsync [OPTION]... rsync://[USER@]HOST[:PORT]/SRC [DEST]
 
 **语法**
 
-```shell
+```
 scp(选项)(参数)
 ```
 
 **选项**
 
-```shell
+```
 -1： 强制scp命令使用协议ssh1
 -2： 强制scp命令使用协议ssh2
 -4： 强制scp命令只使用IPv4寻址
@@ -3192,7 +3189,7 @@ scp(选项)(参数)
 
 ### sed
 
-```sh
+```
 -n                #或者--quiet或者--silent，仅显示处理后的结果
 -e script         #指定sed编辑命令
 -i                #直接修改读取的文件内容，而不是输出到终端。
@@ -3215,7 +3212,7 @@ scp(选项)(参数)
 
 例如：
 
-```shell
+```
 #-d的使用：
 echo -e "123\n234\n342\n" | sed '/^234$/d'    #删除“234”的行（整行删除）
 echo -e "123\n234\n342\n" | sed 2d            #删除第二行
@@ -3250,14 +3247,14 @@ sed $'s/\'//g'
 
 新的例子
 
-```sh
+```
 # 打印文件以hhh开始的所有行
 sed -n '/hhh/,\$p' $file
 ```
 
 删除空行
 
-```sh
+```
 sed '/^\s*$/d' $file
 ```
 
@@ -3271,7 +3268,7 @@ sed '/^\s*$/d' $file
 
 ### sed命令
 
-```shell
+```
 a\ # 在当前行下面插入文本。
 i\ # 在当前行上面插入文本。
 c\ # 把选定的行改为新的文本。
@@ -3301,7 +3298,7 @@ W file # 写并追加模板块的第一行到file末尾。
 
 #### sed替换标记
 
-```shell
+```
 g # 表示行内全面替换。  
 p # 表示打印行。  
 w # 表示把行写入一个文件。  
@@ -3313,7 +3310,7 @@ y # 表示把一个字符翻译为另外的字符（但是不用于正则表达�
 
 #### sed元字符集
 
-```shell
+```
 ^ # 匹配行开始，如：/^sed/匹配所有以sed开头的行。
 $ # 匹配行结束，如：/sed$/匹配所有以sed结尾的行。
 . # 匹配一个非换行符的任意字符，如：/s.d/匹配s后接一个任意字符，最后是d。
@@ -3333,7 +3330,7 @@ x\{m,n\} # 重复字符x，至少m次，不多于n次，如：/0\{5,10\}/匹配5
 
 显示或者设置shell特性及shell变量
 
-```shell
+```
 set    -e                #若指令传回值不等于0，则立即退出
     +e                #关闭上面那个，让原脚本继续执行 一般配套使用
     -- <args>        #设置参数 如 set -- h1 h2 ;echo $@,$#
@@ -3482,14 +3479,14 @@ SIGVTALRM 终止进程 虚拟计时器到时
 
 ### seq
 
-```tex
+```
 以指定增量从首数开始打印数字到尾数
     -f, --format=格式        使用printf 样式的浮点格式
     -s, --separator=字符串   使用指定字符串分隔数字（默认使用：\n）
     -w, --equal-width        在列前添加0 使得宽度相同
 ```
 
-```shell
+```
 #%后面指定数字的位数 默认是%g，%3g那么数字位数不足部分是空格。
 #seq -f"%3g" 9 11
 9
@@ -3499,7 +3496,7 @@ SIGVTALRM 终止进程 虚拟计时器到时
 
 ### sort
 
-```tex
+```
 对文本文件中所有行进行排序。
     -n, --numeric-sort             根据数字排序。
     -r, --reverse                  将结果倒序排列。
@@ -3521,7 +3518,7 @@ ss命令可以传递的参数：
 
 ### ssh
 
-```shell
+```
 ssh-keygen -t rsa            #生成rsa秘钥
 ssh-copy-id user@host        #复制公钥到需要的主机，或其它方式发送公钥过去改名为authorized_keys
 
@@ -3618,7 +3615,7 @@ command="/bin/sh xxx.sh" $pub_key
 
 读取管道文件
 
-```shell
+```
 -i    # 调整标准输入流缓冲区
 -o    # 调整标准输出流缓冲区
 -e    # 标准错误流缓冲区
@@ -3628,7 +3625,7 @@ L    # 行缓冲模式
 
 ### sudo
 
-```shell
+```
 # /etc/sudoers
 ALL    ALL=(ALL:ALL) ALL
 
@@ -3671,7 +3668,7 @@ tac命令就是将文件反向输出，刚好和cat输出相反。
 
 反向列出test.txt文件的内容：
 
-```sh
+```
 [root@linuxcool ~]# cat test.txt 
 hello world
 hello linuxcool
@@ -3692,7 +3689,7 @@ hello world
 
 ### tar
 
-```shell
+```
 tar
     -zcvf            #创建新包
     -zxvf            #解压包
@@ -3745,7 +3742,7 @@ tar
 
 例子
 
-```sh
+```
 [root@localhost ~]# ps -eLf | grep qemu
 root       1389   1339   1389  0    3 14:48 pts/0    00:00:10 /usr/libexec/qemu-kvm -cpu SandyBridge -vnc 0.0.0.0:1 centos1708.img
 root       1389   1339   1393  2    3 14:48 pts/0    00:00:36 /usr/libexec/qemu-kvm -cpu SandyBridge -vnc 0.0.0.0:1 centos1708.img
@@ -3759,7 +3756,7 @@ pid 1389's current affinity mask: ff
 
 输出结构处理器亲和性掩码是ff，表示进程（或 线程）可以在Host上让任何一个CPU运行。查看进程（或 线程）允许允许CPU范围使用-c参数。由于我的Host CPU是4核2线程，因此有8颗逻辑CPU。
 
-```sh
+```
 [root@localhost ~]# taskset -cp 1393
 pid 1393's current affinity list: 0-7
 [root@localhost ~]# taskset -cp 1389
@@ -3772,7 +3769,7 @@ taskset -p  hexadecimal mask PID/LWP
 
 上面1393号线程可以在0~7号CPU之间允许，现在设置掩码0x11（二进制0001 0001），表示可以在0~4号CPU上允许。
 
-```sh
+```
 [root@localhost ~]# taskset -p 0x11  1393
 pid 1393's current affinity mask: ff
 pid 1393's new affinity mask: 11
@@ -3786,7 +3783,7 @@ pid 1393's current affinity list: 0,4
 
 使用-c参数
 
-```sh
+```
 [root@localhost ~]# taskset -cp 0,3  1393
 pid 1393's current affinity list: 0,4
 pid 1393's new affinity list: 0,3
@@ -3936,25 +3933,25 @@ pid 1393's current affinity list: 0,3
 
 抓取8080端口的数据包
 
-```text
+```
 tcpdump -i any port 8080 
 ```
 
 抓取从192.168.1.110发送到192.168.1.111的数据包
 
-```text
+```
 tcpdump -i any src host 192.168.1.110 and dst host 192.168.1.111
 ```
 
 抓取192.168网段除了192.168.1.110的请求的数据包
 
-```text
+```
 tcpdump -i any src net 192.168 and 'src host not 192.168.1.110'
 ```
 
 抓取8080端口的数据包并写入dump.log文件中
 
-```text
+```
 tcpdump -i any port 8080 -w dump.log
 ```
 
@@ -3978,7 +3975,7 @@ telnet [host|ip [port]]
 
 判断
 
-```sh
+```
 test file -nt file2
 ```
 
@@ -3996,7 +3993,7 @@ test file -nt file2
 
 **语法**
 
-```shell
+```
 time(参数)
 ```
 
@@ -4008,7 +4005,7 @@ time(参数)
 
 当测试一个程序或比较不同算法时，执行时间是非常重要的，一个好的算法应该是用时最短的。所有类UNIX系统都包含time命令，使用这个命令可以统计时间消耗。例如：
 
-```shell
+```
 [root@localhost ~]# time ls
 anaconda-ks.cfg  install.log  install.log.syslog  satools  text
 
@@ -4027,19 +4024,19 @@ shell内建也有一个time命令，当运行time时候是调用的系统内建�
 
 使用`-o`选项将执行时间写入到文件中：
 
-```shell
+```
 /usr/bin/time -o outfile.txt ls
 ```
 
 使用`-a`选项追加信息：
 
-```shell
+```
 /usr/bin/time -a -o outfile.txt ls
 ```
 
 使用`-f`选项格式化时间输出：
 
-```shell
+```
 /usr/bin/time -f "time: %U" ls
 ```
 
@@ -4063,7 +4060,7 @@ shell内建也有一个time命令，当运行time时候是调用的系统内建�
 
 ### top
 
-```shell
+```
 top                #实时动态地查看系统的整体运行情况
     -b            #以批处理模式操作；
     -c            #显示完整的治命令；
@@ -4079,13 +4076,13 @@ top                #实时动态地查看系统的整体运行情况
 
 ### touch
 
-```shell
+```
 touch -t '202110211245.23' te.txt    #指定时间的文件创建
 ```
 
 ### tr
 
-```shell
+```
 #tr命令 可以对来自标准输入的字符进行替换、压缩和删除。
 tr(选项)(参数)
 
@@ -4109,7 +4106,7 @@ tr -s '\n'            #删除重复的换行
 
 例：
 
-```shell
+```
 echo "HELLO WORLD" | tr 'A-Z' 'a-z'
 hello world
 ```
@@ -4194,7 +4191,7 @@ traceroute to www.l.google.com (66.249.89.99), 30 hops max, 38 byte packets
 
 指定在接收到信号之后将要采取的动作
 
-```shell
+```
 trap "动作" "信号"
 
 #例如，收到0信号执行exit 1
@@ -4207,14 +4204,14 @@ trap "exit 1" 0
 
 ### uname
 
-```tex
+```
 打印当前系统相关信息
     -r或--release：显示操作系统的发行编号
 ```
 
 ### uniq
 
-```tex
+```
 忽略重复的行
     -c, --count                在每行开头增加重复次数。
     -d, --repeated             所有邻近的重复行只被打印一次。输出出现次数大于1的内容
@@ -4296,7 +4293,7 @@ drwxr-xr-x 2 rootlocal rootlocal 4096 2011-9-19 21:46 test1/
 
 ### uptime
 
-```shell
+```
 #能够打印系统总共运行了多长时间和系统的平均负载。
 #uptime命令可以显示的信息显示依次为：
 #现在时间、系统已经运行了多长时间、目前有多少登陆用户、系统在过去的1分钟、5分钟和15分钟内的平均负载。
@@ -4342,7 +4339,7 @@ useradd dy1 -m -s /bin/sh -d /home/dy1
 
 周期执行给定的指令
 
-```sh
+```
 watch （选项） （参数）
 ```
 
@@ -4357,7 +4354,7 @@ watch （选项） （参数）
 
 ### wc
 
-```tex
+```
 统计文件的字节数、字数、行数
     -c # 统计字节数，或--bytes或——chars：只显示Bytes数；。
     -l # 统计行数，或——lines：只显示列数；。
@@ -4382,13 +4379,13 @@ wget支持HTTP，HTTPS和FTP协议，可以使用HTTP代理。所谓的自动下
 
 **语法**
 
-```vshell
+```
 wget [参数] [URL地址]
 ```
 
 **选项**
 
-```shell
+```
 启动参数：
 
 -V, –-version 显示wget的版本后退出
@@ -4526,7 +4523,7 @@ xargs 是一个强有力的命令，它能够捕获一个命令的输出，然�
 
 之所以能用到这个命令，关键是由于很多命令不支持|管道来传递参数，而日常工作中有有这个必要，所以就有了 xargs 命令，例如：
 
-```sh
+```
 find /sbin -perm +700 |ls -l       #这个命令是错误的
 find /sbin -perm +700 |xargs ls -l   #这样才是正确的
 ```

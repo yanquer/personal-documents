@@ -1,11 +1,12 @@
 
+## python的一些常识
 
 
 ### 1、python的单双引号
 
 基本没有差别，混合使用可以减少转义
 
->```python
+>```
 >#包含单引号字符串
 >my_str = 'I\'m a student'
 >my_str = "I'm a student"
@@ -74,12 +75,12 @@ pkg_resources.DistributionNotFound: pip==0.8.1
 
 最终的解决方案：
 
-```sh
+```
 which pip
 # /usr/local/bin/pip
 ```
 
-```sh
+```
 python -m pip install --upgrade --force pip==9		#这里我需要的是9版本的pip
 
 cat /usr/local/bin/pip2.7 >/usr/local/bin/pip		#这里是which位置
@@ -105,7 +106,7 @@ ln -s /usr/local/bin/pip2.7 /usr/bin/local
 
 也可以直接
 
-```sh
+```
 apt-cache show $package
 ```
 
@@ -113,7 +114,7 @@ apt-cache show $package
 
 有些涉及到了系统的包没法操作的话
 
-```sh
+```
 apt-get install aptitude
 aptitude insatll $package		#这里会给出依赖方案，选一个可行的
 
@@ -152,7 +153,7 @@ py3.6之后
 
 > 换成了两个一维列表组成
 
-```python
+```
 my_dict = {}
 
 '''
@@ -250,7 +251,7 @@ r+是打开后，可以读取文件内容吧，保存原有内容，追加写内
 
 比如：
 
-```python
+```
 class Cat:
     def __str__(self):
         return "猫"
@@ -273,7 +274,7 @@ print(t)
 
 并且用其中的一个值和最终的数与会得到他本身，反之为0 
 
-```python
+```
 if __name__ == '__main__':
     a, b, c = 2, 4, 8
     d = a | b | c
@@ -319,7 +320,7 @@ if __name__ == '__main__':
 
 ### 12、python执行linux命令
 
-```python
+```
 import subprocess
 import os
 
@@ -366,7 +367,7 @@ if __name__ == '__main__':
 
 ### 13、赋值
 
-```python
+```
 a=b=c=[]
 ```
 
@@ -472,7 +473,7 @@ https://docs.djangoproject.com/zh-hans/3.2/ref/contrib/admin/actions/
 
 ### 20、时间格式
 
-```python
+```
 # django 数据库查询 2021-07-30T02:46:00.Z 格式日期转换
 
 # 末日数据库格式查询结果
@@ -491,7 +492,7 @@ a.astimezone(TZ_SHANGHAI).strftime('%Y-%m-%d %H:%M:%S')
 
 ### 21、合并多个字典
 
-```python
+```
 dict(dict1, **dict2, **dict3)
 ```
 
@@ -568,7 +569,7 @@ python -B
 
 n进制转换为十进制，假设需要转换的位str的数字字符串
 
-```python
+```
 # str=001234; n=8
 print int(str, n)
 ```

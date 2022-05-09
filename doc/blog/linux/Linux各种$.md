@@ -1,6 +1,6 @@
-### Linux各种$
+## Linux各种$
 
-```shell
+```
 $$        #Shell本身的PID（ProcessID，即脚本运行的当前 进程ID号）
 $!        #Shell最后运行的后台Process的PID(后台运行的最后一个进程的 进程ID号)
 $?        #最后运行的命令的结束代码（返回值）即执行上一个指令的返回值

@@ -67,7 +67,7 @@ python3一个新特性就是对文本和二进制做了更清晰的划分，文�
 
 ​	1.使用decode方法
 
-```python
+```
 #text.txt是读取的文件内容，编码ANSI，实际应该是gb2312吧
 with open("text.txt","r") as f:
     lines = f.readlines()			#将内容转换为数组
@@ -81,7 +81,7 @@ with open("text.txt","r") as f:
 
 ​	2.导入codecs模块
 
-```python
+```
 #text.txt是读取的文件内容，编码ANSI，实际应该是gb2312吧
 #codesc.open的encoding参数可以指定原文件的编码，读取写入就会自动转换
 with codecs.open("text.txt","r",encoding="gb2312") as f:
@@ -96,7 +96,7 @@ with codecs.open("text.txt","r",encoding="gb2312") as f:
 
 > 读文件时候asacll一直无法转换成功，使用json.dumps解决
 >
-> ```python
+> ```
 > >>> a='\xe6\x81\xb6\xe6\x84\x8f\xe8\xbd\xaf\xe4\xbb\xb6'
 > >>> bb=json.dumps(a, encoding="UTF-8", ensure_ascii=False)
 > >>> print(bb)

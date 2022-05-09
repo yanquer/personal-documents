@@ -1,4 +1,4 @@
-### bash括号
+## bash括号
 
 **单小括号()**
 
@@ -21,14 +21,14 @@
   
   字符串比较时可用 == 和 != ，而整数比较时要使用 
   
-  ```shell
+  ```
   -eq        #等于 equal
   -ne        #不等于 not equal 有些说是 inequality
   -gt        #大于 greater than
   -lt        #小于 less than
   -ge        #大于等于 greater than or equal
   -le        #小于等于 less than or equal
-  ```
+```
   
   - 
 

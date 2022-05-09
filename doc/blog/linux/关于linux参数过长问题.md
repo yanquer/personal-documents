@@ -1,8 +1,8 @@
-### 关于linux参数过长问题，
+## 关于linux参数过长问题，
 
 查看参数可以使用
 
-```sh
+```
 xargs --show-limits
 ```
 
@@ -16,7 +16,7 @@ Size of command buffer we are actually using: 131072
 
 实际测试 最大只能到 131071
 
-```sh
+```
 /bin/echo `python -c "print '.'*131071"`
 ```
 

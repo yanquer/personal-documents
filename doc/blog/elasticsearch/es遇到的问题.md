@@ -1,10 +1,10 @@
-### es遇到的问题
+## es遇到的问题
 
 
 
 #### 1、防火墙
 
-```shell
+```
 #开放9200端口允许访问
 iptables -I INPUT -p tcp --dport 9200 -j ACCEPT
 #查看已有的端口
@@ -17,7 +17,7 @@ iptables -L -n
 
 修改ElasticSearch配置文件，config下：ElasticSearch.yml在最后面加两行代码
 
-```yaml
+```
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 ```
@@ -37,7 +37,7 @@ http.cors.allow-origin: "*"
 
 #### 4、配置
 
-```yaml
+```
 #在config下的elasticsearch.yml下
 
 cluster.name: training_safe_2021	#设置集群名字
@@ -53,7 +53,7 @@ path.logs: ../elastic_all/es_logs
 
 ###### 	主节点elasticsearch.yml:
 
-```yaml
+```
 #集群名，节点名
 cluster.name: test-master
 node.name: test-node1
@@ -78,7 +78,7 @@ discovery.zen.ping.unicast.hosts: ["192.168.1.1:9303","192.168.1.1:9304","192.16
 
 ###### 	副节点之一elasticsearch.yml:
 
-```yaml
+```
 #
 cluster.name: test-master
 node.name: test-node2
@@ -102,7 +102,7 @@ discovery.zen.ping.unicast.hosts: ["192.168.1.1:9303","192.168.1.1:9304","192.16
 
 ###### 	副节点之二elasticsearch.yml:
 
-```yaml
+```
 #
 cluster.name: test-master
 node.name: test-node3
@@ -162,7 +162,7 @@ discovery.zen.ping.unicast.hosts: ["192.168.1.1:9303","192.168.1.1:9304","192.16
 
 附主节点配置
 
-```yaml
+```
 #集群名，节点名
 cluster.name: test-master
 node.name: test-node1
@@ -191,7 +191,7 @@ cluster.initial_master_nodes: ["127.0.0.1:9300"]
 9300是端口transport端口号，9200是http端口号，详见：和 Elasticsearch 交互
 验证ES是否启动成功：访问127.0.0.1:9200，看是否能访问成功~
 
-```yaml
+```
 {
   "name" : "-WsJ6Vr",
   "cluster_name" : "elasticsearch",

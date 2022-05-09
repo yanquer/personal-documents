@@ -1,4 +1,4 @@
-### Linux内核学习笔记（4）-- wait、waitpid、wait3 和 wait4
+## Linux内核学习笔记（4）-- wait、waitpid、wait3 和 wait4
 
 Linux下有四个wait函数：
 

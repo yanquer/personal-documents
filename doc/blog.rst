@@ -78,6 +78,16 @@ redis
 
     blog/计算机网络/*
 
+曾经的学习记录
+====================
+
+.. toctree::
+    :maxdepth: 2
+    :caption: 曾经的学习记录
+    :glob: 
+
+    blog/曾经的学习记录/*
+
 nginx
 ====================
 
@@ -107,6 +117,16 @@ mysql
     :glob: 
 
     blog/mysql/*
+
+深度学习
+====================
+
+.. toctree::
+    :maxdepth: 2
+    :caption: 深度学习
+    :glob: 
+
+    blog/深度学习/*
 
 elasticsearch
 ====================

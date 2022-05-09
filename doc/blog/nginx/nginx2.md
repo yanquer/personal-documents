@@ -112,22 +112,22 @@ Nginx联合创始人安德鲁·阿列克谢夫（Andrew Alexeev）曾说：Nginx
 
 Upstream 指定后端服务器地址列表，在 server 中拦截响应请求，并将请求转发到 Upstream 中配置的服务器列表。
 
-```shell
-upstream balanceServer {
-	server 10.1.22.33:12345;
-	server 10.1.22.34:12345;
-	
-    server 10.1.22.35:12345;
-    }
-    
-server {
-	server_name  fe.server.com;
-	listen 80;
-	location /api {
-		proxy_pass http://balanceServer;
-		}
-	}
-```
+
+    upstream balanceServer {
+        server 10.1.22.33:12345;
+        server 10.1.22.34:12345;
+        
+        server 10.1.22.35:12345;
+        }
+        
+    server {
+        server_name  fe.server.com;
+        listen 80;
+        location /api {
+            proxy_pass http://balanceServer;
+            }
+        }
+
 
 
 
@@ -159,7 +159,7 @@ server {
 
 04 **Nginx常用命令**
 
-```shell
+```
 # 快速关闭Nginx，可能不保存相关信息，并迅速终止web服务
 nginx -s stop
 
@@ -284,7 +284,7 @@ Nginx是一款自由的、开源的、高性能的HTTP服务器和反向代理�
 
  **Nginx配置**
 
-```shell
+```
 #打开主配置文件，若你是用lnmp环境安装vim /usr/local/nginx/conf/nginx.conf
 ----------------------------------------
 
@@ -301,7 +301,7 @@ events {
 
 我们使用 nginx 的 http 服务，在配置文件 nginx.conf 中的 http 区域内，配置无数个 server ，每一个 server 对应这一个虚拟主机或者域名。
 
-```shell
+```
 http {
 	... ...        #后面再详细介绍 http 配置项目        
 	
@@ -332,7 +332,7 @@ http {
 
 我们再来看看 http 的配置详情
 
-```shell
+```
 http {		
     sendfile  on                  #高效传输文件的模式 一定要开启    
     keepalive_timeout   65        #客户端服务端请求超时时间

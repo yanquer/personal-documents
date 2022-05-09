@@ -6,7 +6,7 @@
 
 Python 字典(Dictionary) get() 函数返回指定键的值。
 
-```python
+```
 dict.get(key, default=None)
 ```
 
@@ -32,7 +32,7 @@ list 求交集并集差集
 
 不建议的
 
-```python
+```
 # 假设有两个集合 a,b
 # 交集
 [val for val in a if val in b]
@@ -46,7 +46,7 @@ list(set(a+b))
 
 建议的高效的
 
-```python
+```
 # 假设有两个集合 a,b
 # 交集
 list(set(a).intersection(set(b)))
@@ -60,7 +60,7 @@ list(set(b).difference(set(a)))	# b中有而a中没有的
 
 set的运算
 
-```python
+```
 s = set([3,5,9,10,20,40])      #创建一个数值集合 
 t = set([3,5,9,1,7,29,81])      #创建一个数值集合 
 

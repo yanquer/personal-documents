@@ -44,4 +44,5 @@ def find_blog(file_dir):
 if __name__ == '__main__':
 	rst_str = find_blog(BLOG_DIR_INDEX)
 	write(rst_str, BLOG_RST)
+	print('write rst success')
 

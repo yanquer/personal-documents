@@ -10,7 +10,7 @@
 
 > 安装samba
 
-```shell
+```
 sudo apt install samba
 ```
 
@@ -20,7 +20,7 @@ sudo apt install samba
 
 samba的配置文件一般在
 
-```shell
+```
 /etc/samba/smb.conf
 ```
 
@@ -28,7 +28,7 @@ samba的配置文件一般在
 
 > 简单配置smb.conf
 
-```shell
+```
 #案例
 #打开 sudo vim /etc/samba/smb.conf
 #最后添加 示例：
@@ -46,7 +46,7 @@ samba的配置文件一般在
 
 自己机器的配置
 
-```shell
+```
 [luyi]
     comment = "luyi"
     path = /home/luyi
@@ -55,7 +55,7 @@ samba的配置文件一般在
 
 添加用户并设置密码
 
-```shell 
+``` 
 pdbedit -a luyi
 ```
 
@@ -65,7 +65,7 @@ over
 
 
 
-```shell
+```
 #lz使用的是debian10，samba版本为4.9.5-debian，samba服务名为smbd
 #所以启动之类的需要 service smdb start，之前用samba tab出来的一直报错找了半天原因......
 ```
@@ -108,7 +108,7 @@ over
 
 > 定义全局的配置
 
-```shell
+```
     workgroup = MYGROUP							#工作组，按win下的理解即可
     											#win默认为WORKGROUP
     											
@@ -164,7 +164,7 @@ over
 
 > 关于security级别
 
-```tex
+```
 安全级别解析：
 
 1) share模式：不用进行权限匹配检查即可访问共享资源，安全性比较差；
@@ -180,7 +180,7 @@ over
 
 > 关于samba三种用户后台
 
-```tex
+```
 smbpasswd：该方式是使用smb工具smbpasswd给系统用户（真实用户或者虚拟用户）设置一个Samba 密码，客户端就用此密码访问Samba资源。smbpasswd在/etc/samba中，有时需要手工创建该文件。
 	-a：添加
 　　 -x：删除
@@ -206,7 +206,7 @@ ldapsam：基于LDAP账户管理方式验证用户。首先要建立LDAP服务�
 
 > global其他的参数
 
-```shell
+```
 netbios name = MYSERVER 	# 设置出现在“网上邻居”中的主机名
 
 hosts allow = 127. 192.168.12. 192.168.13. 	# 用来设置允许的主机，如果在前面加”;”则表示允许所有主机

@@ -8,7 +8,7 @@ UEFI ==》 加载引导程序 （一般情况）
 
 在控制台上显示的内核错误信息，能够通过设置他们的阈值水平来配置。
 
-```sh
+```
 dmesg -n3
 
 
@@ -31,7 +31,7 @@ dmesg -n3
 
 在 `systemd` 下, 内核和系统的信息都通过日志服务 `systemd-journald.service` (又名 `journald`)来记录，放在"`/var/log/journal`"下的不变的二进制数据，或放在"`/run/log/journal/`"下的变化的二进制数据.这些二进制日志数据，可以通过 `journalctl`(1) 命令来访问。例如，你可以显示从最后一次启动以来的日志，按如下所示：
 
-```sh
+```
 journalctl -b
 
 操作										命令片段

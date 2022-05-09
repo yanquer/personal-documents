@@ -1,3 +1,6 @@
+
+## PAM模块
+
 ### PAM模块
 
 PAM（Pluggable Authentication Modules， 嵌入式模块）
@@ -21,7 +24,7 @@ passwd执行流程
 
 配置文件结构
 
-```sh
+```
 # /etc/pam.d/passwd
 #%PAM-1.0
 
@@ -90,7 +93,7 @@ auth    include        system-auth
 
 ### Linux重置root(user)
 
-```sh
+```
 pam_tally2 --user=root --reset    # 重置登陆计数器
 
 passwd root    # 重置密码

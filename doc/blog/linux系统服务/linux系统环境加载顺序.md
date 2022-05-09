@@ -1,4 +1,4 @@
-### linux系统环境加载顺序
+## linux系统环境加载顺序
 
 - 登陆shell(login shell)：
   
@@ -16,7 +16,7 @@
 
 （可以通过 echo $0 查看）
 
-```sh
+```
 ###演示环境
 [root@system1 ~]# more /etc/redhat-release 
 Red Hat Enterprise Linux Server release 7.0 (Maipo)
@@ -26,7 +26,6 @@ Red Hat Enterprise Linux Server release 7.0 (Maipo)
 /dev/pts/1
 
 # ### Author : Leshami QQ/Weixin : 645746311
-# ### Blog  : http://blog.csdn.net/leshami
 
 ###输入 echo $0， 显示结果为 -bash ，即为登陆shell
 [root@system1 ~]# echo $0
@@ -59,7 +58,7 @@ root      77332  77122  0 17:06 pts/1    00:00:00 grep --color=auto bash
   
   ​    shell也可以运行在另外一种模式：非交互式模式，以shell script(非交互)方式执行。在这种模式 下，shell不与你进行交互，而是读取存放在文件中的命令,并且执行它们。当它读到文件的结尾EOF，shell也就终止了。
 
-```sh
+```
 ###如下，执行 echo $-，查看其中的“i”选项（表示interactive shell）
 [root@system1 ~]# echo $-
 himBH

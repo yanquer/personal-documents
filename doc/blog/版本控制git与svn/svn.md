@@ -1,4 +1,4 @@
-### svn
+## svn
 
 ###### 安装
 
@@ -27,7 +27,7 @@ password-stores = simple
 store-plaintest-passwords
 ```
 
-```sh
+```
 # 解压到指定路径 这个时候是 $svn_path 下的所有文件 在 $local_path下面
 svn checkout $svn_path $local_path
 
@@ -43,7 +43,7 @@ svn update
 
 解决
 
-```sh
+```
 # 修改/etc/profile
 # 加入
 export LC_ALL=C
@@ -55,7 +55,7 @@ source /etc/profile
 
 这样弄才解决的
 
-```sh
+```
 sudo dpkg-reconfigure locales
 ```
 

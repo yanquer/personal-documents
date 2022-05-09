@@ -1,8 +1,11 @@
+
+## gdb
+
 ### 使用
 
 
 
-```sh
+```
 bt			#打印当前的堆栈信息 backtrace
 ```
 
@@ -41,7 +44,7 @@ gdb exefile corefile < script
 
 常用的command
 
-```sh
+```
 run						#运行
 info xxx				#显示xxx信息
 bt						#显示堆栈
@@ -186,7 +189,7 @@ $ gdb -ex r --args python <programname>.py <arguments>
 
 调试
 
-```sh
+```
 bt				#查看c调用堆栈
 py-by			#查看python调用栈
 info threads	#相关线程信息

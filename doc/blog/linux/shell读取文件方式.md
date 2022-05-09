@@ -1,7 +1,7 @@
-### while read line的使用
+## while read line的使用
 
 1。重定向
-```sh
+```
 while read line
 
 do
@@ -15,7 +15,7 @@ read通过输入重定向，把file的第一行所有的内容赋值给变量lin
 
 2.使用管道：
 
-```sh
+```
 command | while read line
 
 do

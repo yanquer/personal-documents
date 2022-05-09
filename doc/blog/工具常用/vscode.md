@@ -1,3 +1,6 @@
+
+## vscode
+
 ### vscode
 
 ```
@@ -9,7 +12,7 @@ ctrl + shift + p        #全局打开文件
 
 关于setting.json
 
-```json
+```
 {
     // Git 可执行文件路径
     "git.path": "D:/Program Files/Git/bin/git.exe"
@@ -43,7 +46,7 @@ ctrl + shift + p        #全局打开文件
 
 在bin文件夹下打开cmd，运行如下命令
 
-```shell
+```
 code --install-extension octref.vuter-0.23.0.vsix 	#需要安装的插件文件名
 ```
 

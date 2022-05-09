@@ -1,4 +1,4 @@
-### pycharm
+## pycharm
 
 记录一个pycharm文本替换快捷键
 mac：command + r

@@ -1,11 +1,11 @@
-### Json模块
+## Json模块
 
 
 #### 1、loads与load方法的异同
 
 在Python中json是一个非常常用的模块，这个主要有4个方法：
 
-```python
+```
 json.dumps
 json.dump
 json.loads
@@ -39,7 +39,7 @@ json.load
 
 #### dump()及其参数
 
-```python
+```
 json.dump(data, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None)
 ```
 
@@ -83,7 +83,7 @@ load操作的是文件流
 
 先来一个例子，除了要转换的对象，其他什么参数都不传：
 
-```python
+```
 s = '{"name": "wade", "age": 54, "gender": "man"}'
 # json.loads读取字符串并转为Python对象
 print("json.loads将字符串转为Python对象: type(json.loads(s)) 
@@ -115,7 +115,7 @@ with open('s.json', 'r') as f:
 日常工作中最常见的就是把字符串通过json.loads转为字典，其实json的loads方法不仅可以把字符串转为字典，还可以转为任何Python对象。
 比如说，转成python基本数据类型：
 
-```python
+```
 print('json.loads 将整数类型的字符串转为int类型: type(json.loads("123456"))) --> {}'.format(type(json.loads("123456"))))
 
 print('json.loads 将浮点类型的字符串转为float类型: type(json.loads("123.456")) --> {}'.format(type(json.loads("123.456"))))
@@ -137,7 +137,7 @@ json模块会根据你的字符串自动转为最符合的数据类型，
 
 但是需要注意的是不能把转为字符串，否则会报json.decoder.JSONDecodeError错误:
 
-```python
+```
 json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 ```
 
@@ -149,7 +149,7 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 
 我们先看下json.loads方法的签名：
 
-```python
+```
 def loads(s, encoding=None, cls=None, object_hook=None, parse_float=None,
         parse_int=None, parse_constant=None, object_pairs_hook=None, **kw):
     """Deserialize ``s`` (a ``str`` or ``unicode`` instance containing a JSON    # 把一个字符串反序列化为Python对象，这个字符串可以是str类型的，也可以是unicode类型的
@@ -215,7 +215,7 @@ def loads(s, encoding=None, cls=None, object_hook=None, parse_float=None,
 object_hook参数是可选的，它会将（loads的)返回结果字典替换为你所指定的类型,这个功能可以用来实现自定义解码器，如JSON-RPC
 这里先定义一个Person对象：
 
-```python
+```
 class Person:
     def __init__(self, name, age, gender):
         self.name = name
@@ -239,7 +239,7 @@ class Person:
 
 OK，试下object_hook参数吧：
 
-```python
+```
 s = '{"name": "马云", "age": 54, "gender": "man"}'
 # 测试json.loads方法的object_hook参数
 p = json.loads(s, object_hook=Person.parseJSON)
@@ -257,7 +257,7 @@ print("json.loads 是否将字符串转为Person对象了: --> " + str(isinstanc
 
 object_pairs_hook参数是可选的，它会将结果以key-value有序列表的形式返回,形式如：`[(k1, v1), (k2, v2), (k3, v3)]`,如果object_hook和object_pairs_hook同时指定的话优先返回object_pairs_hook
 
-```python
+```
 s = '{"name": "马云", "age": 54, "gender": "man"}'
 # 测试json.loads方法的object_pairs_hook参数
 print("-" * 30 + "> test object_pairs_hook <" + "-" * 30)
@@ -277,7 +277,7 @@ print("json.loads 指定object_pairs_hook结果将会返回一个有序列表 --
 
 parse_float参数是可选的，它如果被指定的话，在解码json字符串的时候，符合float类型的字符串将被转为你所指定的，比如说你可以指定为decimal.Decimal
 
-```python
+```
 # 测试json.loads方法的parse_float参数
 print("-" * 30 + "> test parse_float <" + "-" * 30)
 p = json.loads("123.456", parse_float=decimal.Decimal)
@@ -295,7 +295,7 @@ print("")
 
 parse_int参数是可选的，它如果被指定的话，在解码json字符串的时候，符合int类型的字符串将被转为你所指定的，比如说你可以指定为float
 
-```python
+```
 # 测试json.loads方法的parse_int参数
 print("-" * 30 + "> test parse_int <" + "-" * 30)
 p = json.loads("123", parse_int=float)
@@ -312,7 +312,7 @@ print("json.loads 通过parse_int参数将原本应该转为int类型的字符�
 
 parse_constant参数是可选的，它如果被指定的话，在解码json字符串的时候，如果出现以以下字符串:-Infinity，Infinity，NaN那么指定的parse_constant方法将会被调用到
 
-```python
+```
 def transform(s):
     """
     此方法作为参数传给json.load(s)方法的parse_转译NAN, -Infinity,Infinity

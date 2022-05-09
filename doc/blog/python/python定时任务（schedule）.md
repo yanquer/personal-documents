@@ -1,6 +1,6 @@
-##### python定时任务（schedule）
+## python定时任务（schedule）
 
-```python
+```
 import schedule
 
 def job(name):
@@ -25,7 +25,7 @@ while True:
 
 此处学习是由于网络脚本定时器的编写，完成的python脚本代码如下：
 
-```python
+```
 #!/usr/local/bin/python
 import schedule
 import time

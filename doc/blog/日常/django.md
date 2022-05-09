@@ -1,4 +1,4 @@
-# Django
+## Django
 
 进度：
 https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/
@@ -17,11 +17,11 @@ https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/
 
 
 
-## 创建项目
+### 创建项目
 
 
 
-```sh
+```
 django-admin startproject $项目名
 ```
 
@@ -29,7 +29,7 @@ django-admin startproject $项目名
 
 
 
-## 模型模块module
+### 模型模块module
 
 
 
@@ -83,11 +83,11 @@ filter/other
 
 
 
-### 模型类
+#### 模型类
 
 
 
-#### 1、模型定义
+##### 1、模型定义
 
 每个模型都是python的一个类，且需继承 django.db.models.Model
 
@@ -101,7 +101,7 @@ filter/other
 
 新建 app
 
-```sh
+```
 python manage.py start myapp
 ```
 
@@ -109,7 +109,7 @@ python manage.py start myapp
 
 配置app
 
-```python
+```
 INSTALL_APPS = [
 	'myapp'
 ]
@@ -119,7 +119,7 @@ INSTALL_APPS = [
 
 将变更好的内容写入数据库
 
-```sh
+```
 # 查找所有可用的模型 为任意一个在数据库中不存在对应数据表的模型创建迁移脚本文件
 python manage.py makemigrations
 
@@ -129,29 +129,29 @@ python manage.py migrate
 
 
 
-#### 2、模型中的字段类型
+##### 2、模型中的字段类型
 
 待看
 https://docs.djangoproject.com/zh-hans/3.2/ref/models/fields/#model-field-types
 
 
 
-##### AutoField
+###### AutoField
 
 一个 IntegerField，根据可用的 ID 自动递增。你通常不需要直接使用它；如果你没有指定，主键字段会自动添加到你的模型中。
 
 
-##### BigAutoField
+###### BigAutoField
 
 一个 64 位整数，与 AutoField 很相似，但保证适合 1 到 9223372036854775807 的数字。
 
 
-##### BigIntegerField
+###### BigIntegerField
 
 一个 64 位的整数，和 IntegerField 很像，只是它保证适合从 -9223372036854775808 到 9223372036854775807 的数字。该字段的默认表单部件是一个 NumberInput。
 
 
-##### BinaryField
+###### BinaryField
 
 一个用于存储原始二进制数据的字段。可以指定为 bytes、bytearray 或 memoryview。
 
@@ -167,7 +167,7 @@ BinaryField 有一个额外的可选参数：
 虽然你可能会想到在数据库中存储文件，但考虑到这在99%的情况下是糟糕的设计。这个字段 不能 代替正确的 静态文件 处理。
 
 
-##### BooleanField
+###### BooleanField
 
 一个 true／false 字段。
 
@@ -176,7 +176,7 @@ BinaryField 有一个额外的可选参数：
 当 Field.default 没有定义时，BooleanField 的默认值是 None。
 
 
-##### CharField
+###### CharField
 
 一个字符串字段，适用于小到大的字符串。
 
@@ -191,7 +191,7 @@ CharField 有两个额外的参数：
 
 
 
-##### DateField
+###### DateField
 
 一个日期，在 Python 中用一个 datetime.date 实例表示。有一些额外的、可选的参数。
 
@@ -218,14 +218,14 @@ auto_now_add、auto_now 和 default 选项是相互排斥的。这些选项的�
 auto_now 和 auto_now_add 选项将始终使用创建或更新时 默认时区 的日期。如果你需要一些不同的东西，你可能需要考虑使用你自己的可调用的默认值，或者覆盖 save() 而不是使用 auto_now 或 auto_now_add ；或者使用 DateTimeField 而不是 DateField，并决定如何在显示时间处理从日期时间到日期的转换。
 
 
-##### DateTimeField
+###### DateTimeField
 
 class DateTimeField(auto_now=False, auto_now_add=False, \*\*options)
 一个日期和时间，在 Python 中用一个 datetime.datetime 实例表示。与 DateField 一样，使用相同的额外参数。
 
 该字段的默认表单部件是一个单独的 DateTimeInput。管理中使用两个单独的 TextInput 部件，并使用 JavaScript 快捷方式。
 
-##### DecimalField
+###### DecimalField
 
 class DecimalField(max_digits=None, decimal_places=None, \*\*options)
 一个固定精度的十进制数，在 Python 中用一个 Decimal 实例来表示。它使用 DecimalValidator 验证输入。
@@ -251,7 +251,7 @@ models.DecimalField(..., max_digits=19, decimal_places=10)
 关于 FloatField 和 DecimalField 类之间差异的更多信息，请参见 FloatField vs. DecimalField。你还应该注意小数字段的 SQLite 限制。
 
 
-##### DurationField
+###### DurationField
 class DurationField(\*\*options)
 一个用于存储时间段的字段——在 Python 中用 timedelta 建模。当在 PostgreSQL 上使用时，使用的数据类型是 interval，在 Oracle 上使用的数据类型是 INTERVAL DAY(9) TO SECOND(6)。否则使用微秒的 bigint。
 
@@ -259,12 +259,12 @@ class DurationField(\*\*options)
 
 DurationField 的算术在大多数情况下是可行的。但在 PostgreSQL 以外的所有数据库中，将 DurationField 的值与 DateTimeField 实例上的算术进行比较，将无法达到预期的效果。
 
-##### EmailField
+###### EmailField
 
 class EmailField(max_length=254, \*\*options)
 一个 CharField，使用 EmailValidator 来检查该值是否为有效的电子邮件地址。
 
-##### FileField
+###### FileField
 
 class FileField(upload_to=None, max_length=100, \*\*options)
 一个文件上传字段
@@ -334,7 +334,7 @@ Changed in Django 3.1:
 
 FileField 实例在数据库中被创建为 varchar 列，默认最大长度为 100 个字符。与其他字段一样，你可以使用 max_length 参数改变最大长度。
 
-##### FileField 和 FieldFile
+###### FileField 和 FieldFile
 
 class FieldFile
 当你访问一个模型上的 FileField 时，你会得到一个 FieldFile 的实例作为访问底层文件的代理。
@@ -375,7 +375,8 @@ FieldFile.save(name, content, save=True)
 注意 content 参数应该是 django.core.files.File 的实例，而不是 Python 内置的文件对象。你可以从现有的 Python 文件对象构造一个 File，像这样：
 
 from django.core.files import File
-#Open an existing file using Python's built-in open()
+
+Open an existing file using Python's built-in open()
 f = open('/path/to/hello.world')
 myfile = File(f)
 或者你可以从 Python 字符串中构建一个像这样的字符串：
@@ -391,7 +392,7 @@ FieldFile.delete(save=True)
 
 请注意，当一个模型被删除时，相关文件不会被删除。如果你需要清理遗留文件，你需要自己处理（例如，使用自定义管理命令，可以手动运行或通过例如 cron 定期运行）。
 
-##### FilePathField
+###### FilePathField
 
 class FilePathField(path='', match=None, recursive=False, allow_files=True, allow_folders=False, max_length=100,\ *\*options)
 一个 CharField，其选择仅限于文件系统中某个目录下的文件名。有一些特殊的参数，其中第一个参数是 必须的。
@@ -429,7 +430,7 @@ FilePathField(path="/home/images", match="foo.*", recursive=True)
 
 FilePathField 实例在数据库中作为 varchar 列创建，默认最大长度为 100 个字符。与其他字段一样，你可以使用 max_length 参数改变最大长度。
 
-##### FloatField
+###### FloatField
 
 class FloatField(\*\*options)
 在 Python 中用一个 float 实例表示的浮点数。
@@ -440,7 +441,7 @@ FloatField vs. DecimalField
 
 FloatField 类有时会与 DecimalField 类混淆。虽然它们都表示实数，但它们表示的方式不同。FloatField 内部使用 Python 的 float 类型，而 DecimalField 则使用 Python 的 Decimal 类型。关于两者之间的区别，请参见 Python 的 decimal 模块的文档。
 
-##### ImageField
+###### ImageField
 
 class ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, \*\*options)
 继承 FileField 的所有属性和方法，但也验证上传的对象是有效的图像。
@@ -461,7 +462,7 @@ ImageField 实例在数据库中创建为 varchar 列，默认最大长度为 10
 
 该字段的默认表单部件是一个 ClearableFileInput。
 
-##### IntegerField
+###### IntegerField
 
 class IntegerField(\*\*options)
 一个整数。从 -2147483648 到 2147483647 的值在 Django 支持的所有数据库中都是安全的。
@@ -470,7 +471,7 @@ class IntegerField(\*\*options)
 
 当 localize 为 False 时是 NumberInput 否则，该字段的默认表单部件是 TextInput。
 
-##### GenericIPAddressField
+###### GenericIPAddressField
 
 class GenericIPAddressField(protocol='both', unpack_ipv4=False, **options)¶
 IPv4 或 IPv6 地址，字符串格式（如 192.0.2.30 或 2a02:42fe::4 ）。该字段的默认表单部件是一个 TextInput。
@@ -485,7 +486,7 @@ GenericIPAddressField.unpack_ipv4¶
 
 如果允许空值，就必须允许 null 值，因为空值会被存储为 null。
 
-##### JSONField
+###### JSONField
 
 class JSONField(encoder=None, decoder=None, **options)¶
 New in Django 3.1.
@@ -519,7 +520,7 @@ Oracle 用户
 
 Oracle 数据库不支持存储 JSON 标量值。只支持 JSON 对象和数组（在 Python 中使用 dict 和 list 表示)。
 
-##### NullBooleanField
+###### NullBooleanField
 
 class NullBooleanField(**options)¶
 就像 BooleanField 的 null=True。
@@ -527,20 +528,20 @@ class NullBooleanField(**options)¶
 3.1 版后已移除:
 NullBooleanField 已被废弃，改为 BooleanField(null=True)。
 
-##### PositiveBigIntegerField¶
+###### PositiveBigIntegerField¶
 class PositiveBigIntegerField(**options)¶
 New in Django 3.1.
 就像一个 PositiveIntegerField，但只允许在某一特定点下的值（依赖于数据库）。0 到 9223372036854775807 的值在 Django 支持的所有数据库中都是安全的。
 
-##### PositiveIntegerField¶
+###### PositiveIntegerField¶
 class PositiveIntegerField(**options)¶
 就像 IntegerField 一样，但必须是正值或零（ 0 ）。从 0 到 2147483647 的值在 Django 支持的所有数据库中都是安全的。出于向后兼容的原因，接受 0 的值。
 
-##### PositiveSmallIntegerField¶
+###### PositiveSmallIntegerField¶
 class PositiveSmallIntegerField(**options)¶
 就像一个 PositiveIntegerField，但只允许在某一特定（数据库依赖的）点下取值。0 到 32767 的值在 Django 支持的所有数据库中都是安全的。
 
-##### SlugField¶
+###### SlugField¶
 class SlugField(max_length=50, **options)¶
 Slug 是一个报纸术语。slug 是一个简短的标签，只包含字母、数字、下划线或连字符。它们一般用于 URL 中。
 
@@ -555,15 +556,15 @@ Slug 是一个报纸术语。slug 是一个简短的标签，只包含字母、�
 SlugField.allow_unicode¶
 如果是 True，该字段除了接受 ASCII 字母外，还接受 Unicode 字母。默认值为 False。
 
-##### SmallAutoField¶
+###### SmallAutoField¶
 class SmallAutoField(**options)¶
 就像一个 AutoField，但只允许值在一定（依赖于数据库）的限制下。1 到 32767 的值在 Django 支持的所有数据库中都是安全的。
 
-##### SmallIntegerField¶
+###### SmallIntegerField¶
 class SmallIntegerField(**options)¶
 就像一个 IntegerField，但只允许在某一特定（依赖于数据库的）点下取值。从 -32768 到 32767 的值在 Django 支持的所有数据库中都是安全的。
 
-##### TextField¶
+###### TextField¶
 class TextField(**options)¶
 一个大的文本字段。该字段的默认表单部件是一个 Textarea。
 
@@ -581,13 +582,13 @@ Oracle
 
 Oracle 不支持 TextField 的字符序。
 
-##### TimeField¶
+###### TimeField¶
 class TimeField(auto_now=False, auto_now_add=False, **options)¶
 一个时间，在 Python 中用 datetime.time 实例表示。接受与 DateField 相同的自动填充选项。
 
 该字段默认的表单部件t是一个 TimeInput。管理中添加了一些 JavaScript 快捷方式。
 
-##### URLField¶
+###### URLField¶
 class URLField(max_length=200, **options)¶
 URL 的 CharField，由 URLValidator 验证。
 
@@ -595,7 +596,7 @@ URL 的 CharField，由 URLValidator 验证。
 
 像所有的 CharField 子类一样， URLField 接受可选的 max_length 参数。如果你没有指定 max_length 参数，则使用默认的 200。
 
-##### UUIDField¶
+###### UUIDField¶
 class UUIDField(**options)¶
 一个用于存储通用唯一标识符的字段。使用 Python 的 UUID 类。当在 PostgreSQL 上使用时，它存储在一个 uuid 的数据类型中，否则存储在一个 char(32) 中。
 
@@ -633,7 +634,7 @@ class MyUUIDModel(models.Model):
 
 
 
-##### Model.save()
+###### Model.save()
 
 [Model.save(force_insert=False, force_update=False, using=DEFAULT_DB_ALIAS, update_fields=None)](https://docs.djangoproject.com/zh-hans/3.2/ref/models/instances/#django.db.models.Model.save)
 
@@ -648,7 +649,7 @@ For details on using the `force_insert` and `force_update` arguments, see [强�
 
 
 
-#### 3、模型中的字段选项
+##### 3、模型中的字段选项
 
 
 
@@ -697,17 +698,17 @@ For details on using the `force_insert` and `force_update` arguments, see [强�
 
 
 
-##### 字段选项，部分解释
+###### 字段选项，部分解释
 
 
 
-###### 1、null
+####### 1、null
 
 默认 Flase，当设置 null=True ，当该字段为空时，将数据库中对应的字段设置为空
 
 
 
-###### 2、blank
+####### 2、blank
 
 默认 Flase，当设置 blank=True，该字段允许为空
 
@@ -715,13 +716,13 @@ For details on using the `force_insert` and `force_update` arguments, see [强�
 
 
 
-###### 3、choices
+####### 3、choices
 
 一系列二元数组，在表单上表示为选择框
 
 如，一个选项列表
 
-```python
+```
 from django.db import models
 
 class Person(models.Model):
@@ -743,7 +744,7 @@ class Person(models.Model):
 
 当代码包含此字段时，可以使用 get\_定义值\_dispaly 来获取响应的结果，如
 
-```sh
+```
 >>> p = Person(name="Fred Flintstone", shirt_size="L")
 >>> p.save()
 >>> p.shirt_size
@@ -756,7 +757,7 @@ class Person(models.Model):
 
 
 
-###### 4、default
+####### 4、default
 
 该字段的默认值
 
@@ -764,7 +765,7 @@ class Person(models.Model):
 
 
 
-###### 5、help-text
+####### 5、help-text
 
 表单使用的额外帮助文档
 
@@ -772,7 +773,7 @@ class Person(models.Model):
 
 
 
-###### 6、primary_key
+####### 6、primary_key
 
 设置为Ture，表示为此模型的主键
 
@@ -786,7 +787,7 @@ class Person(models.Model):
 
 
 
-###### 7、unique
+####### 7、unique
 
 设置为True表示，此字段的值在表中是保持唯一
 
@@ -794,7 +795,7 @@ class Person(models.Model):
 
 
 
-###### 8、verbose_name
+####### 8、verbose_name
 
 字段备注名
 
@@ -804,7 +805,7 @@ class Person(models.Model):
 
 
 
-###### 9、through
+####### 9、through
 
 仅用于多对多字段中
 
@@ -814,7 +815,7 @@ class Person(models.Model):
 
 
 
-#### 4、模型中的一些函数/方法
+##### 4、模型中的一些函数/方法
 
 
 
@@ -834,7 +835,7 @@ class Person(models.Model):
 
 
 
-#### 5、自定义sql
+##### 5、自定义sql
 
 
 
@@ -842,7 +843,7 @@ class Person(models.Model):
 
 如：
 
-```sh
+```
 >>> Person.objects.raw('''SELECT first AS first_name,
 ...                              last AS last_name,
 ...                              bd AS birth_date,
@@ -854,7 +855,7 @@ class Person(models.Model):
 
 带参
 
-```sh
+```
 >>> lname = 'Doe'
 >>> Person.objects.raw('SELECT * FROM myapp_person WHERE last_name = %s', [lname])
 ```
@@ -869,13 +870,13 @@ class Person(models.Model):
 
 
 
-#### 6、抽象基类
+##### 6、抽象基类
 
 抽象基类在你要将公共信息放入很多模型时会很有用。编写你的基类，并在 [Meta](https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#meta-options) 类中填入 `abstract=True`。该模型将不会创建任何数据表。当其用作其它模型类的基类时，它的字段会自动添加至子类。
 
 如：
 
-```python
+```
 from django.db import models
 
 class CommonInfo(models.Model):
@@ -897,28 +898,28 @@ class Student(CommonInfo):
 
 
 
-### 模型类内部类Meta
+#### 模型类内部类Meta
 
 
 
-#### 可用的选项
+##### 可用的选项
 
 
 
-###### abstract
+####### abstract
 
 abstract = True，表示这是一个抽象基类
 
 
 
-###### app_label
+####### app_label
 
 
 
 如果在 INSTALLED_APPS 中定义了一个应用程序之外的模型，它必须声明它属于哪个应用程序：
 
 
-```python
+```
 app_label = 'myapp'
 ```
 
@@ -927,13 +928,13 @@ app_label = 'myapp'
 
 
 
-###### db_table
+####### db_table
 
 用于模型的数据库表的名称
 
 
 
-###### base_manager_name
+####### base_manager_name
 
 管理器的属性名
 
@@ -944,7 +945,7 @@ app_label = 'myapp'
 
 
 
-###### db_tablespace
+####### db_tablespace
 
 数据库表空间名称
 
@@ -953,7 +954,7 @@ app_label = 'myapp'
 
 
 
-###### default_manager_name
+####### default_manager_name
 
 模型的管理器名称
 
@@ -962,7 +963,7 @@ app_label = 'myapp'
 
 
 
-###### default_related_name
+####### default_related_name
 
 从相关对象到这个对象的关系默认使用的名称。默认为 `_set`。
 
@@ -973,7 +974,7 @@ app_label = 'myapp'
 
 
 
-###### get_latest_by
+####### get_latest_by
 
 模型中的字段名或字段名列表
 
@@ -982,7 +983,7 @@ app_label = 'myapp'
 
 
 
-###### managed
+####### managed
 
 默认为True，表示Django 管理 数据库表的生命周期。
 
@@ -991,26 +992,26 @@ app_label = 'myapp'
 
 
 
-###### order_with_respect_to
+####### order_with_respect_to
 
 使该对象可以根据给定字段（通常是 ForeignKey ）进行排序。
 
 
 
 
-###### ordering
+####### ordering
 
 对象的默认排序
 
 
 
 
-###### permissions
+####### permissions
 
 表的额外权限
 
 创建此对象时要输入权限表的额外权限。为每个模型自动创建添加、更改、删除和查看权限。这个例子指定了一个额外的权限，can_deliver_pizzas ：
-```python
+```
 permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
 ```
 这是一个由二元元组组成的列表或元组，格式为 (permission_code, human_readable_permission_name)。
@@ -1019,7 +1020,7 @@ permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
 
 
 
-###### default_permissions
+####### default_permissions
 
 默认值为 ('add', 'change', 'delete', 'view') 。
 你可以自定义这个列表，例如，如果你的应用不需要任何默认的权限，可以将其设置为空列表。它必须在模型创建之前通过 migrate 在模型上指定，以防止任何遗漏的权限被创建。
@@ -1028,7 +1029,7 @@ permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
 
 
 
-###### proxy
+####### proxy
 
 如果 `proxy = True`，作为另一个模型子类的模型将被视为 [代理模型](https://docs.djangoproject.com/zh-hans/3.2/topics/db/models/#proxy-models)。
 
@@ -1036,14 +1037,14 @@ permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
 
 
 
-###### required_db_features
+####### required_db_features
 
 当前连接应具备的数据库特征列表，以便在迁移阶段考虑模型。例如，如果你将此列表设置为 ['gis_enabled']，则模型将只在支持 GIS 的数据库上同步。在使用多个数据库后端进行测试时，跳过一些模型也很有用。避免模型之间的关系，这些模型可能会被创建，也可能不会被创建，因为 ORM 不会处理这个问题。
 
 
 
 
-###### required_db_vendor
+####### required_db_vendor
 
 本模型所特有的支持的数据库厂商名称。目前的内置厂商名称是： `sqlite`，`postgresql`，`mysql` 和 `oracle`。如果该属性不为空，且当前连接厂商与之不匹配，则该模型将不会同步。
 
@@ -1051,7 +1052,7 @@ permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
 
 
 
-###### select_on_save
+####### select_on_save
 
 确定 Django 是否会使用 1.6 之前的 [django.db.models.Model.save()](https://docs.djangoproject.com/zh-hans/3.2/ref/models/instances/#django.db.models.Model.save) 算法。旧的算法使用 `SELECT` 来确定是否有一条现有的记录需要更新。新算法直接尝试 `UPDATE`。在一些罕见的情况下，Django 看不到现有行的 `UPDATE`。例如 PostgreSQL 的 `ON UPDATE` 触发器会返回 `NULL`。在这种情况下，即使数据库中存在一条记录，新算法最终也会进行 `INSERT`。
 
@@ -1063,13 +1064,13 @@ permissions = [('can_deliver_pizzas', 'Can deliver pizzas')]
 
 
 
-###### indexes
+####### indexes
 
 定义索引列表
 
 如
 
-```python
+```
 from django.db import models
 
 class Customer(models.Model):
@@ -1087,7 +1088,7 @@ class Customer(models.Model):
 
 
 
-###### unique_together
+####### unique_together
 
 一组字段名，组合起来必须是唯一的
 
@@ -1095,7 +1096,7 @@ class Customer(models.Model):
 
 
 
-###### index_together
+####### index_together
 
 可以理解为联合索引
 
@@ -1103,28 +1104,28 @@ class Customer(models.Model):
 
 
 
-###### constraints
+####### constraints
 
 表约束
 
 
 
 
-###### verbose_name
+####### verbose_name
 
 对象的注释 单数
 
 
 
 
-###### verbose_name_plural
+####### verbose_name_plural
 
 对象的复数，默认是上一个加s
 
 
 
 
-###### label
+####### label
 
 对象的表示，返回 app_label.object_name，例如 'polls.Question'。
 
@@ -1132,7 +1133,7 @@ class Customer(models.Model):
 
 
 
-###### label_lower
+####### label_lower
 
 模型的表示，返回 app_label.model_name，例如 'polls.question'。
 
@@ -1146,7 +1147,7 @@ class Customer(models.Model):
 
 
 
-## 后台管理模块admin
+### 后台管理模块admin
 
 
 
@@ -1158,13 +1159,13 @@ class Customer(models.Model):
 
 
 
-##### 1、常用字段
+###### 1、常用字段
 
 
 
 例子：
 
-```python
+```
 from django.contrib import admin
 
 from .models import Question
@@ -1189,9 +1190,9 @@ admin.site.register(Question, QuestionAdmin)
 
 
 
-###### 1、fields
+####### 1、fields
 
-```python
+```
 fields = ['pub_date', 'question_text']
 ```
 
@@ -1201,9 +1202,9 @@ fields = ['pub_date', 'question_text']
 
 
 
-###### 2、fieldsets
+####### 2、fieldsets
 
-```python
+```
 fieldsets = [
         (None,               {'fields': ['question_text']}),
         ('Date information', {'fields': ['pub_date']}),
@@ -1218,9 +1219,9 @@ fieldsets = [
 
 
 
-###### 3、list_display
+####### 3、list_display
 
-```python
+```
 list_display = ('question_text', 'pub_date')
 ```
 
@@ -1230,9 +1231,9 @@ list_display = ('question_text', 'pub_date')
 
 
 
-###### 4、list_filter
+####### 4、list_filter
 
-```python
+```
 list_filter = ['pub_date']
 ```
 
@@ -1240,9 +1241,9 @@ list_filter = ['pub_date']
 
 
 
-###### 5、search_fields
+####### 5、search_fields
 
-```python
+```
 search_fields = ['question_text']
 ```
 
@@ -1254,7 +1255,7 @@ search_fields = ['question_text']
 
 
 
-##### 2、自定义后台界面风格
+###### 2、自定义后台界面风格
 
 通过 Django 的模板系统来修改。
 
@@ -1268,7 +1269,7 @@ Django 的后台由自己驱动，且它的交互接口采用 Django 自己的�
 
 在 settings.py 配置 DIRS选项
 
-```python
+```
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -1324,13 +1325,13 @@ TEMPLATES 作用：
 
 
 
-## settings常用字段
+### settings常用字段
 
 
 
   
 
-##### 1、TEMPLATES
+###### 1、TEMPLATES
 
 默认： `[]` （空列表）
 
@@ -1351,7 +1352,7 @@ TEMPLATES = [
 
 
 
-###### 1、BACKEND
+####### 1、BACKEND
 
 默认：未定义
 
@@ -1364,7 +1365,7 @@ TEMPLATES = [
 
 
 
-###### 2、NAME
+####### 2、NAME
 
 默认：见下方
 
@@ -1374,7 +1375,7 @@ TEMPLATES = [
 
 
 
-###### 3、DIRS
+####### 3、DIRS
 
 默认： `[]` （空列表）
 
@@ -1382,7 +1383,7 @@ TEMPLATES = [
 
 
 
-###### 4、APP_DIRS
+####### 4、APP_DIRS
 
 默认：`False`
 
@@ -1394,7 +1395,7 @@ TEMPLATES = [
 
 
 
-###### 5、OPTIONS
+####### 5、OPTIONS
 
 默认值： `{}` （空字典）
 
@@ -1414,7 +1415,7 @@ TEMPLATES = [
 
 
 
-## 应用打包
+### 应用打包
 
 
 
@@ -1512,7 +1513,7 @@ install_requires =
 
 setup.py
 
-```python
+```
 from setuptools import setup
 
 setup()
@@ -1522,12 +1523,11 @@ setup()
 
 6、默认情况，包中仅包含 Python 模块和包。要包含其他文件，我们需要创建一个`MANIFEST.in` 文件。 上一步中提到的 setuptools 文档更详细地讨论了这个文件。 要包含模板、`README.rst` 和我们的 `LICENSE` 文件，创建一个文件 `MANIFEST.in` ，其内容如下：
 
-```in
-include LICENSE
-include README.rst
-recursive-include polls/static *
-recursive-include polls/templates *
-```
+
+    include LICENSE
+    include README.rst
+    recursive-include polls/static *
+    recursive-include polls/templates *
 
 
 
@@ -1551,11 +1551,11 @@ recursive-include docs *
 
 
 
-## 其他
+### 其他
 
 
 
-#### 缓存模块的问题
+##### 缓存模块的问题
 
 使用的 LocMemCache 是不能作同步缓存的
 
@@ -1589,7 +1589,7 @@ recursive-include docs *
 
 
 
-#### 测试
+##### 测试
 
 一份好的业务代码，是需要经过实际测试的。
 
@@ -1597,7 +1597,7 @@ recursive-include docs *
 
 
 
-##### 编写方法
+###### 编写方法
 
 一般来说，Django的测试用例应该定义在应用的 tests.py 文件里。
 
@@ -1607,7 +1607,7 @@ recursive-include docs *
 
 比如有一个 polls 的django应用，将以下代码写入 tests.py
 
-```python
+```
 import datetime
 
 from django.test import TestCase
@@ -1636,17 +1636,17 @@ class QuestionModelTests(TestCase):
 
 
 
-##### 运行测试
+###### 运行测试
 
 在终端中，我们通过输入以下代码运行测试:
 
-```sh
+```
 $ python manage.py test polls
 ```
 
 你将会看到运行结果:
 
-```sh
+```
 Creating test database for alias 'default'...
 System check identified no issues (0 silenced).
 F
@@ -1694,9 +1694,9 @@ Destroying test database for alias 'default'...
 
 
 
-## 附1：常用指令
+### 附1：常用指令
 
-```sh
+```
 # 查看django位置
 python -c "import django; print(django.__path__)"
 
@@ -1709,7 +1709,7 @@ python manage.py test polls
 
 
 
-```sh
+```
 # 创建 django 项目
 $ django-admin startproject $pro
 
@@ -1738,7 +1738,7 @@ $ python manage.py shell
 
 url path 四个参数
 
-```python
+```
 # view 可以是 使用 include() 使用其他的app下的url
 # name 别名
 path('route', view.fun, name='')
@@ -1748,7 +1748,7 @@ path('route', view.fun, name='')
 
 创建管理员用户
 
-```sh
+```
 $ python manage.py createsuperuser
 Username: admin
 Email address: admin@example.com
@@ -1761,7 +1761,7 @@ Superuser created successfully.
 
 数据库的设置 setting.py
 
-```python
+```
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -1784,7 +1784,7 @@ DATABASES = {
 
 
 
-## 附2：QuerySet Api
+### 附2：QuerySet Api
 
 
 
@@ -1797,7 +1797,7 @@ DATABASES = {
 
 
 
-### 模型.objects的一些方法
+#### 模型.objects的一些方法
 
 
 
@@ -1835,7 +1835,7 @@ DATABASES = {
 
 
 
-###### 1、module.objects.all() 
+####### 1、module.objects.all() 
 
 获取该实例的所有信息
 
@@ -1843,35 +1843,35 @@ DATABASES = {
 
 注意：
 
-```python
+```
 Entry.objects.filter(pub_date__year=2006)
 ```
 
 等价于
 
-```python
+```
 Entry.objects.all().filter(pub_date__year=2006)
 ```
 
 
 
-###### 2、module.objects.add() 
+####### 2、module.objects.add() 
 
 添加
 
 
 
-###### 3、module.objects.create() 
+####### 3、module.objects.create() 
 
 创建
 
 
 
-###### 4、module.objects.get() 
+####### 4、module.objects.get() 
 
 
 
-###### 5、module.objects.filter(*kargs)	
+####### 5、module.objects.filter(*kargs)	
 
 过滤器 返回包含指定参数的QuerySet，底层通过AND连接多个参数
 
@@ -1879,29 +1879,29 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 6、module.objects.exclude(*kargs)	
+####### 6、module.objects.exclude(*kargs)	
 
 返回不包含指定参数的QuerySet，底层是用NOT()包裹的AND
 
 
 
-###### 7、module.objects.annotate()	
+####### 7、module.objects.annotate()	
 
 聚合查询，对QuerySet的每个对象进行注解
 
 
 
-###### 8、module.objects.order_by() 
+####### 8、module.objects.order_by() 
 
 排序
 
 
 
-###### 9、module.objects.annotate()
+####### 9、module.objects.annotate()
 
 
 
-###### 10、module.objects.alias()	
+####### 10、module.objects.alias()	
 
 对QuerySet的每个字段设置别名
 
@@ -1909,7 +1909,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 11、module.objects.select_related()	
+####### 11、module.objects.select_related()	
 
 会获取外键对应的对象，
 
@@ -1917,7 +1917,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 12、module.objects.prefetch_related()	
+####### 12、module.objects.prefetch_related()	
 
 多对多字段的查询
 
@@ -1925,19 +1925,19 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 13、module.objects.reverse()	
+####### 13、module.objects.reverse()	
 
 反向查询
 
 
 
-###### 14、module.objects.distinct( *fields )	
+####### 14、module.objects.distinct( *fields )	
 
 反向查询
 
 
 
-###### 15、module.objects.values()	
+####### 15、module.objects.values()	
 
 返查询字典而不是实例
 
@@ -1945,7 +1945,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 16、module.objects.defer()	
+####### 16、module.objects.defer()	
 
 返回对象实例，指定不加载字段
 
@@ -1953,7 +1953,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 17、module.objects.only()	
+####### 17、module.objects.only()	
 
 返回对象实例，指定加载字段
 
@@ -1970,7 +1970,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-###### 18、extra(select=None, where=None, params=None, tables=None, order_by=None, select_params=None)
+####### 18、extra(select=None, where=None, params=None, tables=None, order_by=None, select_params=None)
 
 有时候，Django 查询语法本身并不能很容易地表达一个复杂的 WHERE 子句。对于这些边缘情况，Django 提供了 extra() QuerySet 修饰符——用于将特定的子句注入到由 QuerySet 生成的 SQL 中。
 
@@ -1987,7 +1987,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-#### filter/other
+##### filter/other
 
 过滤后的QuerySet都是唯一的
 
@@ -2022,7 +2022,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 
 
-## 附3：创建虚拟环境
+### 附3：创建虚拟环境
 
 
 
@@ -2030,7 +2030,7 @@ Entry.objects.all().filter(pub_date__year=2006)
 
 要创建虚拟环境，请确定要放置它的目录，然后将[venv](https://docs.python.org/3/library/venv.html#module-venv)模块作为脚本运行
 
-```sh
+```
 # 创建环境位置 常用 .开始，以区分环境变量
 python3 -m venv $mydir
 ```
@@ -2039,7 +2039,7 @@ python3 -m venv $mydir
 
 启动
 
-```sh
+```
 # 如果是windows
 $mydir/scripts/activate.bat
 
@@ -2059,11 +2059,11 @@ source $mydr/bin/activate
 
 
 
-## 附4：F Q
+### 附4：F Q
 
-### F
+#### F
 
-#### 1、F支持表内部字段的比较	单下划线
+##### 1、F支持表内部字段的比较	单下划线
 
 例如，为了查找comments数目多于pingbacks数目的Entry，可以构造一个F()对象来引用pingback数目，并在查询中使用该F()对象：
 
@@ -2078,7 +2078,7 @@ ps： 也支持加减乘除
 
 > Entry.objects.filter(rating__lt=F('number_of_comments') + F('number_of_pingbacks'))
 
-#### 2、F支持跨表查询	双下划线
+##### 2、F支持跨表查询	双下划线
 
 在F()中使用双下划线来进行跨表查询。例如，查询author的名字与blog名字相同的Entry：
 
@@ -2087,7 +2087,7 @@ ps： 也支持加减乘除
 
 
 
-```python
+```
 F，更新时用于获取原来的值
 from django.db.models import F,Q
 models.UserInfo.objects.all().update(age=F("age")+1)
@@ -2130,14 +2130,14 @@ models.UserInfo.objects.filter(con)
 
 
 
-## 附5：web的瓶颈
+### 附5：web的瓶颈
 
 1、单个请求里太多sql串行查询导致耗时长
 2、单个sql太过复杂导致耗时长
 
 
 
-## 附6：外键
+### 附6：外键
 
 pk就是primary key的缩写。通常情况下，一个模型的主键为“id”，所以下面三个语句的效果一样：
 

@@ -1,4 +1,4 @@
-# docker
+## docker
 
 
 
@@ -44,13 +44,13 @@ Docker 容器通过 Docker 镜像来创建。
 
 安装命令如下：
 
-```sh
+```
 curl -fsSL https://get.docker.com | bash -s docker --mirror Aliyun
 ```
 
 也可以使用国内 daocloud 一键安装命令：
 
-```sh
+```
 curl -sSL https://get.daocloud.io/docker | sh
 ```
 
@@ -88,7 +88,7 @@ $ sudo apt-get update
 
 安装 apt 依赖包，用于通过HTTPS来获取仓库:
 
-```sh
+```
 $ sudo apt-get install \
     apt-transport-https \
     ca-certificates \
@@ -99,7 +99,7 @@ $ sudo apt-get install \
 
 添加 Docker 的官方 GPG 密钥：
 
-```sh
+```
 $ curl -fsSL https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/gpg | sudo apt-key add -
 ```
 
@@ -116,7 +116,7 @@ sub   rsa4096 2017-02-22 [S]
 
 使用以下指令设置稳定版仓库
 
-```sh
+```
 $ sudo add-apt-repository \
    "deb [arch=amd64] https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu/ \
   $(lsb_release -cs) \
@@ -129,19 +129,19 @@ $ sudo add-apt-repository \
 
 更新 apt 包索引。
 
-```sh
+```
 $ sudo apt-get update
 ```
 
 安装最新版本的 Docker Engine-Community 和 containerd ，或者转到下一步安装特定版本：
 
-```sh
+```
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
 要安装特定版本的 Docker Engine-Community，请在仓库中列出可用版本，然后选择一种安装。列出您的仓库中可用的版本：
 
-```sh
+```
 $ apt-cache madison docker-ce
 
   docker-ce | 5:18.09.1~3-0~ubuntu-xenial | https://mirrors.ustc.edu.cn/docker-ce/linux/ubuntu  xenial/stable amd64 Packages
@@ -153,13 +153,13 @@ $ apt-cache madison docker-ce
 
 使用第二列中的版本字符串安装特定版本，例如 5:18.09.1~3-0~ubuntu-xenial。
 
-```sh
+```
 $ sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
 ```
 
 测试 Docker 是否安装成功，输入以下指令，打印出以下信息则安装成功:
 
-```sh
+```
 $ sudo docker run hello-world
 
 Unable to find image 'hello-world:latest' locally

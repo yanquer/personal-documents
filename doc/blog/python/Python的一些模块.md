@@ -48,14 +48,14 @@ r：在带有 `'r'` 前缀的字符串字面值中，反斜杠不必做任何特
 
 compile 函数用于编译正则表达式，生成一个正则表达式（ Pattern ）对象，供 match() 和 search() 这两个函数使用。
 
-```python
+```
 prog = re.compile(pattern)
 result = prog.match(string)
 ```
 
 等价于
 
-```python
+```
 result = re.match(pattern, string)
 ```
 
@@ -63,7 +63,7 @@ result = re.match(pattern, string)
 
 举例
 
-```python
+```
 
 >>>import re
 >>> pattern = re.compile(r'\d+')   
@@ -99,7 +99,7 @@ re.match与re.search的区别：re.match只匹配字符串的开始，如果字�
 
 举例：
 
-```python
+```
 import re
 ret = re.search(r"\d+", "阅读次数为9999")
 print(ret.group())
@@ -116,7 +116,7 @@ print(ret.group())
 
 举例：
 
-```python
+```
 import re
 ret = re.findall(r"\d+", "python = 9999, c = 7890, c++ = 12345")
 print(ret)
@@ -125,7 +125,7 @@ print(ret)
 
 举例2：
 
-```python
+```
 import re
 alist = ['a','b','c']
 if re.findall('.$','dfghc')[0] in alist:
@@ -150,7 +150,7 @@ print 'over'
 
 和 findall 类似，在字符串中找到正则表达式所匹配的所有子串，并把它们作为一个迭代器返回。
 
-```python
+```
 import re
 it = re.finditer(r"\d+", "12a32bc43jf3")
 for match in it:
@@ -187,7 +187,7 @@ sub是substitute的所写，表示替换，将匹配到的数据进⾏替换。
 
 方法一：
 
-```python
+```
 import re
 ret = re.sub(r"\d+", '998', "python = 997")
 print(ret)
@@ -199,7 +199,7 @@ print(ret)
 
 方法二：
 
-```python
+```
 import re
 def add(temp):
     #int（）参数必须是字符串，类似字节的对象或数字，而不是“re.Match”
@@ -235,7 +235,7 @@ re.subn(pattern, repl, string[, count])
 
 返回：(sub(repl, string[, count]), 替换次数)
 
-```python
+```
 import re
 pattern = re.compile(r'(\w+) (\w+)')
 s = 'i say, hello world!'
@@ -266,7 +266,7 @@ re.split(pattern, string, maxsplit=0, flags=0)
 
 举例：
 
-```python
+```
 import re
 ret = re.split(r":| ","info:xiaoZhang 33 shandong")
 print(ret)
@@ -290,7 +290,7 @@ Python⾥数量词默认是贪婪的（在少数语⾔⾥也可能是默认⾮�
 
 举例1：
 
-```python
+```
 import re
 
 s="This is a number 234-235-22-423"
@@ -314,7 +314,7 @@ print(r.group(1))
 
 举例2：
 
-```python
+```
 >>> re.match(r"aa(\d+)","aa2343ddd").group(1)
 '2343'
 >>> re.match(r"aa(\d+?)","aa2343ddd").group(1)
@@ -329,7 +329,7 @@ print(r.group(1))
 
 举例3：提取图片地址
 
-```python
+```
 import re
 test_str="<img data-original=https://rpic.douyucdn.cn/appCovers/2016/11/13/1213973.jpg>"
 ret = re.search(r"https://.*?.jpg", test_str)
@@ -346,7 +346,7 @@ print(ret.group())
 
 （前两个和后两个分别用于在编程语言里转义成反斜杠，转换成两个反斜杠后再在正则表达式里转义成一个反斜杠。）
 
-```python
+```
 import re
 mm = "c:\\a\\b\\c"
 print(mm)#c:\a\b\c
@@ -379,7 +379,7 @@ print(ret)#AttributeError: 'NoneType' object has no attribute 'group'
 
 popen()方法语法格式如下：
 
-```python
+```
 os.popen(command[, mode[, bufsize]])
 ```
 
@@ -418,7 +418,7 @@ os.popen(command[, mode[, bufsize]])
 
 要获得os.system的正确返回值，可以使用位移运算（将返回值右移8位）还原返回值：
 
-```sh
+```
 >>> import os
 >>> os.system("./test.sh")
 hello python!
@@ -440,7 +440,7 @@ hello world!
 
 > 这种调用方式是通过管道的方式来实现，函数返回一个file对象，里面的内容是脚本输出的内容（可简单理解为echo输出的内容），使用os.popen调用test.sh的情况：
 
-```sh
+```
 >> import os
 >>> os.popen("./test.sh")
 <open file './test.sh', mode 'r' at 0x7f6cbbbee4b0>
@@ -456,7 +456,7 @@ hello world!
 
 像调用”ls”这样的shell命令，应该使用popen的方法来获得内容，对比如下：
 
-```sh
+```
 >>> import os
 >>> os.system("ls")   #直接看到运行结果
 Desktop    Downloads     Music     Public     Templates  Videos
@@ -485,7 +485,7 @@ Documents  examples.desktop  Pictures  systemExit.py  test.sh
 
 注意：返回值是文件对象，既然是文件对象，使用完就应该关闭，对吧？！不信网上搜一下，一大把文章提到这个os.popen都是忘记关闭文件对象的。 所以，推荐的写法是：
 
-```sh
+```
 with os.popen(command, "r") as p:
     r = p.read()
 ```
@@ -582,7 +582,7 @@ os.popen()在大多数场景都是挺好用方便的，但是也有坑！！ 具
 
 示例：
 
-```python
+```
 path='D:\file\cat\dog.jpg'
 
 print(os.path.basename(path))
@@ -609,7 +609,7 @@ dog.jpg
 
 例子：
 
-```python
+```
 import os
 print('父进程 ID =', os.getpid())
 # 创建一个子进程，下面代码会被两个进程执行
@@ -668,7 +668,7 @@ commands，好像python3.x改了吧，在3.9里没有找到
 
 例子：（摘自源码）
 
-```sh
+```
 #python3.x改了，移除了，在3.9里没有找到
 #我就懒得敲了
 
@@ -693,7 +693,7 @@ commands，好像python3.x改了吧，在3.9里没有找到
 
 执行命令，返回状态码(命令正常执行返回0，报错则返回1)
 
-```sh
+```
 ret1=subprocess.call("ifconfig")
 ret2=subprocess.call("ipconfig")　　　　#python3.5不是这样，依然会抛出异常导致无法对ret2赋值
 print(ret1)     #0
@@ -708,7 +708,7 @@ ret = subprocess.call("ls -l", shell=True)
 
 执行命令，如果执行成功则返回状态码0，否则抛异常
 
-```sh
+```
 subprocess.check_call(["ls", "-l"])
 subprocess.check_call("exit 1", shell=True)
 ```
@@ -717,7 +717,7 @@ subprocess.check_call("exit 1", shell=True)
 
 执行命令，如果执行成功则返回执行结果，否则抛异常
 
-```sh
+```
 subprocess.check_output(["echo", "Hello World!"])
 subprocess.check_output("exit 1", shell=True)
 ```
@@ -740,7 +740,7 @@ subprocess.check_output("exit 1", shell=True)
 | startupinfo           | 只在windows下有效，将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如：主窗口的外观，进程的优先级等等 |
 | createionflags        | 同上                                                         |
 
-```sh
+```
 import subprocess
 ret1 = subprocess.Popen(["mkdir","t1"])
 ret2 = subprocess.Popen("mkdir t2", shell=True)
@@ -751,7 +751,7 @@ ret2 = subprocess.Popen("mkdir t2", shell=True)
 1. 输入即可得到输出，如：ifconfig
 2. 输入进行某环境，依赖再输入，如：python
 
-```sh
+```
 import subprocess
 
 obj = subprocess.Popen("mkdir t3", shell=True, cwd='/home/dev',)     #在cwd目录下执行命令
@@ -796,7 +796,7 @@ print(out_error_list)
 
 ​	sys.argv[]说白了就是一个从程序外部获取参数的桥梁，这个“外部”很关键，所以那些试图从代码来说明它作用的解释一直没看明白。因为我们从外部取得的参数可以是多个，所以获得的是一个列表（list)，也就是说sys.argv其实可以看作是一个列表，所以才能用[]提取其中的元素。其第一个元素是程序本身，随后才依次是外部给予的参数。
 
-```python
+```
 sys.argv[num]		#调用时的第num个参数，0表示脚本本身
 ```
 
@@ -832,7 +832,7 @@ sys.argv[num]		#调用时的第num个参数，0表示脚本本身
 
 如：
 
-```python
+```
 print(timeit.timeit('set([x for x in [1, 3, 5]])'))
 print(timeit.timeit('set(x for x in [1, 3, 5])'))
 ```
@@ -841,7 +841,7 @@ print(timeit.timeit('set(x for x in [1, 3, 5])'))
 
 源码，主要有两个方法
 
-```python
+```
 def timeit(stmt="pass", setup="pass", timer=default_timer,
            number=default_number, globals=None):
     """Convenience function to create Timer object and call timeit method."""
@@ -880,7 +880,7 @@ def repeat(stmt="pass", setup="pass", timer=default_timer,
 
 如：
 
-```python
+```
 dis.dis('set([x for x in [1, 3, 5]])')
 dis.dis('set(x for x in [1, 3, 5])')
 ```
@@ -946,7 +946,7 @@ time.mktime(t)
 
 实例
 
-```python
+```
 #!/usr/bin/python
 import time
 
@@ -960,7 +960,7 @@ print "asctime(localtime(secs)): %s" % time.asctime(time.localtime(secs))
 
 结果
 
-```python
+```
 time.mktime(t) : 1234915418.000000
 asctime(localtime(secs)): Tue Feb 17 17:03:38 2009
 ```
@@ -985,7 +985,7 @@ asctime(localtime(secs)): Tue Feb 17 17:03:38 2009
 
 将一个时间戳转换为当前时区的struct_time。secs参数未提供，则以当前时间为准。
 
-```sh
+```
 >>> time.localtime()
 time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=14, tm_min=14, tm_sec=50, tm_wday=3, tm_yday=125, tm_isdst=0)
 >>> time.localtime(1304575584.1361799)
@@ -998,7 +998,7 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=14, tm_min=6, tm_sec
 
 和localtime()方法类似，gmtime()方法是将一个时间戳转换为UTC时区（0时区）的struct_time。
 
-```sh
+```
 >>>time.gmtime()
 time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec=48, tm_wday=3, tm_yday=125, tm_isdst=0)
 ```
@@ -1027,7 +1027,7 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 
 把一个表示时间的元组或者struct_time表示为这种形式：**'Sun Jun 20 23:21:05 1993'**。如果没有参数，将会将time.localtime()作为参数传入。
 
-```sh
+```
 >>> time.asctime()
 'Thu May 5 14:55:43 2011'
 ```
@@ -1042,7 +1042,7 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 
 如果参数未给或者为None的时候，将会默认time.time()为参数。它的作用相当于time.asctime(time.localtime(secs))。
 
-```sh
+```
 >>> time.ctime()
 'Thu May 5 14:58:09 2011'
 >>> time.ctime(time.time())
@@ -1092,7 +1092,7 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 
 举个例子：
 
-```sh
+```
 >>> time.strftime("%Y-%m-%d %X", time.localtime())
 '2011-05-05 16:37:06'
 ```
@@ -1107,7 +1107,7 @@ time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=6, tm_min=19, tm_sec
 
 把一个格式化时间字符串转化为struct_time。实际上它和strftime()是逆操作。
 
-```sh
+```
 >>> time.strptime('2011-05-05 16:37:06', '%Y-%m-%d %X')
 time.struct_time(tm_year=2011, tm_mon=5, tm_mday=5, tm_hour=16, tm_min=37, tm_sec=6, tm_wday=3, tm_yday=125, tm_isdst=-1)
 ```
@@ -1323,7 +1323,7 @@ $$
 }
 $$
 
-```python
+```
 subprocess.Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)
 ```
 
@@ -1595,7 +1595,7 @@ import` `subprocess``child1 ``=` `subprocess.Popen([``'ls'``, ``'-l'``], stdout`
 
  
 
-```python
+```
 subprocess.STDOUT
 ```
 
@@ -1605,7 +1605,7 @@ subprocess.STDOUT
 
 **subprocess模块定义的异常**
 
-```python
+```
 exception subprocess.CalledProcessError
 ```
 
@@ -1653,7 +1653,7 @@ mmap 模块提供“内存映射的文件对象”，mmap 对象可以用在使�
 
 **创建 mmap 对象**
 
-```python
+```
 mmap(filedesc, length, tagname='') #windows
 mmap(filedesc, length, flag=MAP_SHARED, prot=PROT_READ|PROT_WRITE) #Unix
 ```
@@ -1706,7 +1706,7 @@ mmap(filedesc, length, flag=MAP_SHARED, prot=PROT_READ|PROT_WRITE) #Unix
 >
 > 例：
 >
-> ```python
+> ```
 > # process 1
 > f = open('xxx', 'w')
 > while True:

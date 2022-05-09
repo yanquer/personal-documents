@@ -1,4 +1,4 @@
-### echo and /bin/echo
+## echo and /bin/echo
 
 echo 是shell内置命令
 

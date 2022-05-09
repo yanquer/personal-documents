@@ -1,24 +1,24 @@
-# Mysql
+## Mysql
 
 
 
 
 
-## 常用函数/关键字
+### 常用函数/关键字
 
 
 
-### 函数
+#### 函数
 
 
 
-##### 数值计算
+###### 数值计算
 
 - format
 
   格式化为string，format($num, $n)， 四舍五入保留小数点后 n 位，并格式化用逗号隔开（每三位一个逗号）
 
-  ```sql
+  ```
   select format(1000.1254);
   # 1,000.13
   ```
@@ -31,7 +31,7 @@
 
   截取数字的小数点后几位 truncate($num, $n)，不四舍五入
 
-  ```sql
+  ```
   select truncate(100.1234, 2) as '1';
   # 1
   # 100.12
@@ -42,7 +42,7 @@
 
   转型，会四舍五入
 
-  ```sql
+  ```
   select convert(1478568.2457, DECIMAL(10,2));
   # 1478568.25
   ```
@@ -51,7 +51,7 @@
 
   取整，个位加一
 
-  ```sql
+  ```
   select CEILING(1478568.2457);   直接取整，个位+1
   # 1478569
   ```
@@ -60,7 +60,7 @@
 
   直接取整
 
-  ```sql
+  ```
   select FLOOR(1478568.2457);
   # 1478568
   ```
@@ -70,7 +70,7 @@
 
 
 
-##### 字符串拼接
+###### 字符串拼接
 
 - cancat
 
@@ -82,17 +82,17 @@
 
 
 
-### 关键字
+#### 关键字
 
-#### truncate
+##### truncate
 
-##### 1.truncate使用语法
+###### 1.truncate使用语法
 
 truncate的作用是清空表或者说是截断表，只能作用于表。truncate的语法很简单，后面直接跟表名即可，例如： truncate table tbl_name 或者 truncate tbl_name 。
 
 执行truncate语句需要拥有表的drop权限，从逻辑上讲，truncate table类似于delete删除所有行的语句或drop table然后再create table语句的组合。为了实现高性能，它绕过了删除数据的DML方法，因此，它不能回滚。尽管truncate table与delete相似，但它被分类为DDL语句而不是DML语句。
 
-##### 2.truncate与drop,delete的对比
+###### 2.truncate与drop,delete的对比
 
 上面说过truncate与delete，drop很相似，其实这三者还是与很大的不同的，下面简单对比下三者的异同。
 
@@ -103,7 +103,7 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
 - truncate不会激活与表有关的删除触发器；delete可以。
 - truncate后会使表和索引所占用的空间会恢复到初始大小；delete操作不会减少表或索引所占用的空间，drop语句将表所占用的空间全释放掉。
 
-##### 3.truncate使用场景及注意事项
+###### 3.truncate使用场景及注意事项
 
 通过前面介绍，我们很容易得出truncate语句的使用场景，即该表数据完全不需要时可以用truncate。如果想删除部分数据用delete，注意带上where子句；如果想删除表，当然用drop；如果想保留表而将所有数据删除且和事务无关，用truncate即可；如果和事务有关，或者想触发trigger，还是用delete；如果是整理表内部的碎片，可以用truncate然后再重新插入数据。
 
@@ -122,11 +122,11 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
 
 
 
-## 类型
+### 类型
 
 
 
-##### 1、固定长度 & 可变长度
+###### 1、固定长度 & 可变长度
 
 - varchar
 
@@ -138,7 +138,7 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
   ​	CHAR类型用于存储固定长度字符串：MySQL总是根据定义的字符串长度分配足够的空间。当存储CHAR值时，MySQL会删除字符串中的末尾空格(在MySQL 4.1和更老版本中VARCHAR 也是这样实现的——也就是说这些版本中CHAR和VARCHAR在逻辑上是一样的，区别只是在存储格式上)。
    同时，CHAR值会根据需要采用空格进行剩余空间填充，以方便比较和检索。但正因为其长度固定，所以会占据多余的空间，也是一种空间换时间的策略；
 
-##### 2、存储方式
+###### 2、存储方式
 
 - VARCHAR
     VARCHAR需要使用1或2个额外字节记录字符串的长度：如果列的最大长度小于或等于255字节，则只使用1个字节表示，否则使用2个字节。假设采用latinl字符集，一个VARCHAR(10)的列需要11个字节的存储空间。VARCHAR(1000)的列则需要1002 个字节，因为需要2个字节存储长度信息。
@@ -148,7 +148,7 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
 - CHAR
     CHAR适合存储很短或长度近似的字符串。例如，CHAR非常适合存储密码的MD5值，因为这是一个定长的值。对于经常变更的数据，CHAR也比VARCHAR更好，因为定长的CHAR类型不容易产生碎片。对于非常短的列，CHAR比VARCHAR在存储空间上也更有效率。例如用CHAR(1)来存储只有Y和N的值，如果采用单字节字符集只需要一个字节，但是VARCHAR(1)却需要两个字节，因为还有一个记录长度的额外字节。
 
-##### 3、存储容量
+###### 3、存储容量
 
 - CHAR
     对于char类型来说，最多只能存放的字符个数为255，和编码无关，任何编码最大容量都是255。
@@ -187,7 +187,7 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
 
 
 
-##### 思考：既然VARCHAR长度可变，那我要不要定到最大?
+###### 思考：既然VARCHAR长度可变，那我要不要定到最大?
 
   没错，相信你已经有答案了，别这么干！
 
@@ -200,7 +200,7 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
 
 
 
-##### 类似
+###### 类似
 
  与CHAR和VARCHAR类似的类型还有BINARY和VARBINARY,它们存储的是二进制字符串。二进制字符串跟常规字符串非常相似，但是二进制字符串存储的是字节码而不是字符。 填充也不一样：MySQL填充BINARY采用的是\0 (零字节)而不是空格，在检索时也不会去掉填充值。
 
@@ -216,7 +216,7 @@ truncate的作用是清空表或者说是截断表，只能作用于表。trunca
 
 
 
-## binlog
+### binlog
 
 
 
@@ -243,17 +243,17 @@ Binlog 包括两类文件：
 
 
 
-### 关于binlog的清除/不记录
+#### 关于binlog的清除/不记录
 
 
 
-#### 不记录 
+##### 不记录 
 
 在 配置文件的 mysqld 下写入 skip-log-bin  
 
 
 
-#### 清除
+##### 清除
 
 - **手动清理**
 
@@ -293,7 +293,7 @@ Binlog 包括两类文件：
 
   查看binlog过期时间，这个值默认是0天，也就是说不自动清理，可以根据生产情况修改，本例修改为7天
 
-  ```sql
+  ```
   mysql> show variables like 'expire_logs_days'; 
   
   +------------------------+-------+ 
@@ -364,7 +364,7 @@ Binlog 包括两类文件：
 
 
 
-## DDL与DML
+### DDL与DML
 
 DML(Data Manipulation Language)数据操纵语言：
 
@@ -412,7 +412,7 @@ select name as 姓名, age as 年龄 from stud;
 
 
 
-## MyDumper
+### MyDumper
 
 ​	相对于 [MySQL](https://cloud.tencent.com/product/cdb?from=10680) 官方提供的逻辑备份工具 mysqldump，mydumper 最突出的特性就是可采用多线程并行备份，极大提高了数据导出的速度。
 
@@ -420,7 +420,7 @@ select name as 姓名, age as 年龄 from stud;
 
 使用
 
-```sh
+```
 mydumper -h $host -u $user -p $password --database $db --tables-lists $tables --compress --threads 4 --outputdir $path
 
 # 少一个  --tables-lists $tables 就是全库备份
@@ -438,11 +438,11 @@ mydumper -h $host --database $db --compress --threads 4 --outputdir $path --defa
 
 
 
-## mysql索引
+### mysql索引
 
 
 
-### 基本
+#### 基本
 
 
 
@@ -468,7 +468,7 @@ mydumper -h $host --database $db --compress --threads 4 --outputdir $path --defa
 
 这里在说一下组合索引的遵循最左前缀原则：
 
-```sql
+```
 order by使用索引最左前缀
 - order by a
 - order by a,b
@@ -539,7 +539,7 @@ index_comment  #为索引创建时提供了一个注释属性的索引的任何�
 
 
 
-#### 索引创建原则
+##### 索引创建原则
 
 1. 索引并非越多越好，一个表中如果有大量的索引，不仅占用磁盘空间，而且会影响INSERT、DELETE、UPDATE等语句的性能，因为在表中的数据更改的同时，索引也会进行调整和更新
 2. 避免对经常更新的表进行过多的索引，并且索引中的列尽可能少。而对经常用于查询的字段应该创建索引，但要避免添加不必要的字段。
@@ -564,27 +564,27 @@ index_comment  #为索引创建时提供了一个注释属性的索引的任何�
 
 
 
-#### 普通索引
+##### 普通索引
 
-##### 创建索引
+###### 创建索引
 
 这是最基本的索引，它没有任何限制。它有以下几种创建方式：
 
-```sql
+```
 CREATE INDEX indexName ON table_name (column_name)
 ```
 
 如果是CHAR，VARCHAR类型，length可以小于字段实际长度；如果是BLOB和TEXT类型，必须指定 length。
 
-##### 修改表结构(添加索引)
+###### 修改表结构(添加索引)
 
-```sql
+```
 ALTER table tableName ADD INDEX indexName(columnName)
 ```
 
-##### 创建表的时候直接指定
+###### 创建表的时候直接指定
 
-```sql
+```
 CREATE TABLE mytable(  
  
 ID INT NOT NULL,   
@@ -596,9 +596,9 @@ INDEX [indexName] (username(length))
 );  
 ```
 
-##### 删除索引的语法
+###### 删除索引的语法
 
-```sql
+```
 DROP INDEX [indexName] ON mytable; 
 ```
 
@@ -606,23 +606,23 @@ DROP INDEX [indexName] ON mytable;
 
 
 
-#### 唯一索引
+##### 唯一索引
 
 它与前面的普通索引类似，不同的就是：索引列的值必须唯一，但允许有空值。如果是组合索引，则列值的组合必须唯一。它有以下几种创建方式：
 
-##### 创建索引
+###### 创建索引
 
 ```
 CREATE UNIQUE INDEX indexName ON mytable(username(length)) 
 ```
 
-##### 修改表结构
+###### 修改表结构
 
 ```
 ALTER table mytable ADD UNIQUE [indexName] (username(length))
 ```
 
-##### 创建表的时候直接指定
+###### 创建表的时候直接指定
 
 ```
 CREATE TABLE mytable(  
@@ -640,7 +640,7 @@ UNIQUE [indexName] (username(length))
 
 
 
-#### 使用ALTER 命令添加和删除索引
+##### 使用ALTER 命令添加和删除索引
 
 有四种方式来添加数据表的索引：
 
@@ -670,7 +670,7 @@ mysql> ALTER TABLE testalter_tbl DROP INDEX c;
 
 ------
 
-#### 使用 ALTER 命令添加和删除主键
+##### 使用 ALTER 命令添加和删除主键
 
 主键作用于列上（可以一个列或多个列联合主键），添加主键索引时，你需要确保该主键默认不为空（NOT NULL）。实例如下：
 
@@ -689,7 +689,7 @@ mysql> ALTER TABLE testalter_tbl DROP PRIMARY KEY;
 
 ------
 
-#### 显示索引信息
+##### 显示索引信息
 
 你可以使用 SHOW INDEX 命令来列出表中的相关的索引信息。可以通过添加 \G 来格式化输出信息。
 
@@ -705,7 +705,7 @@ mysql> SHOW INDEX FROM table_name\G
 
 
 
-### 关于聚簇索引与非聚簇索引
+#### 关于聚簇索引与非聚簇索引
 
 
 
@@ -715,7 +715,7 @@ MySQL的InnoDB索引数据结构是B+树，主键索引叶子节点的值存储�
 
 
 
-#### 聚簇索引
+##### 聚簇索引
 
 很简单记住一句话：找到了索引就找到了需要的数据，那么这个索引就是聚簇索引，所以主键就是聚簇索引，修改聚簇索引其实就是修改主键。
 
@@ -725,7 +725,7 @@ MySQL的InnoDB索引数据结构是B+树，主键索引叶子节点的值存储�
 
 
 
-#### 非聚簇索引
+##### 非聚簇索引
 
 索引的存储和数据的存储是分离的，也就是说找到了索引但没找到数据，需要根据索引上的值(主键)再次回表查询,非聚簇索引也叫做辅助索引。
 
@@ -733,7 +733,7 @@ MySQL的InnoDB索引数据结构是B+树，主键索引叶子节点的值存储�
 
 下面我们创建了一个学生表，做三种查询，来说明什么情况下是聚簇索引，什么情况下不是。
 
-```sql
+```
 create table student (
     id bigint,
     no varchar(20) ,
@@ -746,25 +746,25 @@ create table student (
 
 第一种，直接根据主键查询获去所有字段数据，此时主键时聚簇索引，因为主键对应的索引叶子节点存储了id=1的所有字段的值。
 
-```sql
+```
 select * from student where id = 1
 ```
 
 第二种，根据编号查询编号和名称，编号本身是一个唯一索引，但查询的列包含了学生编号和学生名称，当命中编号索引时，该索引的节点的数据存储的是主键ID，需要根据主键ID重新查询一次，所以这种查询下no不是聚簇索引
 
-```sql
+```
 select no,name from student where no = 'test'
 ```
 
 第三种，我们根据编号查询编号（有人会问知道编号了还要查询？要，你可能需要验证该编号在数据库中是否存在），这种查询命中编号索引时，直接返回编号，因为所需要的数据就是该索引，不需要回表查询，这种场景下no是聚簇索引
 
-```sql
+```
 select no from student where no = 'test'
 ```
 
 
 
-#### 总结
+##### 总结
 
 主键一定是聚簇索引，MySQL的InnoDB中一定有主键，即便研发人员不手动设置，则会使用unique索引，没有unique索引，则会使用数据库内部的一个行的id来当作主键索引,其它普通索引需要区分SQL场景，当SQL查询的列就是索引本身时，我们称这种场景下该普通索引也可以叫做聚簇索引，MyisAM引擎没有聚簇索引。
 
@@ -772,11 +772,11 @@ select no from student where no = 'test'
 
 
 
-### 查询
+#### 查询
 
 
 
-#### explain 优化
+##### explain 优化
 
 （查询优化神器）
 
@@ -838,7 +838,7 @@ Extra：表示MySQL在处理查询时的详细信息
 
 
 
-#### 关键选项
+##### 关键选项
 
 - union	去重查询
 - union all	不去重查询
@@ -850,13 +850,13 @@ Extra：表示MySQL在处理查询时的详细信息
 
 
 
-## other
+### other
 
 
 
-##### 建表语句
+###### 建表语句
 
-```sql
+```
 cerate database if not exists db_test default charset utf8mb4;
 use db_test;
 drop table if exists tbl_test;
@@ -871,11 +871,11 @@ create table if not exists tbl_test(
 
 
 
-##### 注释
+###### 注释
 
 - 单行
 
-  ```sql
+  ```
   # select
   -- select
   ```
@@ -884,7 +884,7 @@ create table if not exists tbl_test(
 
 - 多行
 
-  ```sql
+  ```
   /*
   select
   */
@@ -894,11 +894,11 @@ create table if not exists tbl_test(
 
 
 
-##### 查询所占空间
+###### 查询所占空间
 
 1.直接查询
 
-```sql
+```
 select
 table_schema as '数据库',
 sum(table_rows) as '记录数',
@@ -910,7 +910,7 @@ where table_schema='mysql';
 
 2.使用optimize命令
 
-```sql
+```
 optimize table tb_report_inventory;
 ```
 
@@ -924,19 +924,19 @@ optimize table tb_report_inventory;
 
 
 
-##### 执行
+###### 执行
 
 
 
 如果是sql语句文件
 
-```sh
+```
 mysql -u $user -p $pass < $file.sql
 ```
 
 如果不是
 
-```sh
+```
 echo "$sql" | mysql -u $user -p$pass
 ```
 
@@ -944,7 +944,7 @@ echo "$sql" | mysql -u $user -p$pass
 
 如果把账号密码放到一个文件
 
-```sh
+```
 # pwd.cnf
 [client]
 user=root
@@ -953,13 +953,13 @@ password=root
 
 如果是sql语句文件
 
-```sh
+```
 mysql --defaults-extra-file=pwd.cnf < $file.sql
 ```
 
 如果不是
 
-```sh
+```
 echo "$sql" | mysql --defaults-extra-file=pwd.cnf
 ```
 
@@ -967,7 +967,7 @@ echo "$sql" | mysql --defaults-extra-file=pwd.cnf
 
 
 
-##### 外键约束
+###### 外键约束
 
 外键约束（表2）对父表（表1）的含义:
 
@@ -997,7 +997,7 @@ echo "$sql" | mysql --defaults-extra-file=pwd.cnf
 
 
 
-##### mysql8.0
+###### mysql8.0
 
 
 
@@ -1073,7 +1073,7 @@ grant reload on *.* to username@'%';
 
 
 
-##### 关于字符集
+###### 关于字符集
 
 
 
@@ -1085,7 +1085,7 @@ grant reload on *.* to username@'%';
 
 直接修改字符集（不一定有用）
 
-```sql
+```
 select 
 	concat(
     	'alter table ',

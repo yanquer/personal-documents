@@ -5,11 +5,11 @@
 
 查看acl权限
 
-```sh
+```
 getfacle $filename
 ```
 
-```sh
+```
 [root@localhost /]# getfacl project
 #查看/prpject目录的ACL权限
 #file: project <-文件名
@@ -24,7 +24,7 @@ other::--- <-其他人的权限
 
 设置acl权限
 
-```sh
+```
 setfacle 选项 文件名
 ```
 

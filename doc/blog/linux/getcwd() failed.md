@@ -1,6 +1,6 @@
 ## 报错 getcwd() failed
 
-```sh
+```
 sh: 0: getcwd() failed: No such file or directory
 ```
 
